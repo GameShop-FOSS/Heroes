@@ -168,8 +168,8 @@ public class Nose {
 
         Vector3f[] mid = new Vector3f[]{axis.add(new Vector3f(3f, 1, -2)), axis.add(new Vector3f(3, 1, -1)), axis.add(new Vector3f(3, 2, -2)), axis.add(new Vector3f(3, 2, -1))};
         CurrencyLine cl = bottomLeft;
-        CurrencyLine cl1 = new CurrencyLine(new Vector3f[]{axis.add(new Vector3f(backLeft.points[0])), mid[0], mid[1], axis.add(new Vector3f(frontLeft.points[0])),}, (byte) 16);
-        CurrencyLine cl2 = new CurrencyLine(new Vector3f[]{axis.add(new Vector3f(backLeft.points[3])), mid[2], mid[3], axis.add(new Vector3f(frontLeft.points[3])),}, (byte) 16);
+        CurrencyLine cl1 = new CurrencyLine(new Vector3f[]{axis.add(new Vector3f(backLeft.points[1])), mid[0], mid[1], axis.add(new Vector3f(frontLeft.points[1])),}, (byte) 16);
+        CurrencyLine cl2 = new CurrencyLine(new Vector3f[]{axis.add(new Vector3f(backLeft.points[2])), mid[2], mid[3], axis.add(new Vector3f(frontLeft.points[2])),}, (byte) 16);
         CurrencyLine cl3 = topLeft;
 
         Layer layer = new Layer((short) 128, (short) 128);
