@@ -230,8 +230,6 @@ public class Head {
 
     }
 
-    public void translate(Vector3f position){
 
-    }
 
 }
