@@ -72,7 +72,7 @@ public class Head {
           frontTop =  new CurrencyLine(new Vector3f[]{ corners[1], axis.add(new Vector3f(1,3,0)), axis.add( new Vector3f(2,3f,0)), corners[2]}, (byte) 16);
 
           //Chin
-          frontBottom = new CurrencyLine(new Vector3f[]{corners[0], axis.add(new Vector3f(1,-2,0)), axis.add(new Vector3f(2,-2,0)), corners[3]}, (byte) 16);;
+          frontBottom = new CurrencyLine(new Vector3f[]{corners[0], axis.add(new Vector3f(1,-2,0)), axis.add(new Vector3f(2,-2,0)), corners[3]}, (byte) 16);
 
           frontRight = new CurrencyLine(new Vector3f[]{corners[0],axis.add(new Vector3f(0,1,0)) ,axis.add( new Vector3f(0,2,0)),corners[1]}, (byte) 16);
           frontLeft = new CurrencyLine(new Vector3f[]{corners[3],axis.add(new Vector3f(3,1,0)) , axis.add(new Vector3f(3,2,0)), corners[2]}, (byte) 16);
@@ -80,7 +80,7 @@ public class Head {
           backTop = new CurrencyLine(new Vector3f[]{corners[5], axis.add(new Vector3f(1,3,-3)),axis.add( new Vector3f(2,3,-3)), corners[6] }, (byte) 16);
 
           //Back Of Neck
-          backBottom = new CurrencyLine(new Vector3f[]{corners[4], axis.add(new Vector3f(1,1,-3)),axis.add( new Vector3f(2,1,-3)), corners[7]}, (byte) 16);;
+          backBottom = new CurrencyLine(new Vector3f[]{corners[4], axis.add(new Vector3f(1,1,-3)),axis.add( new Vector3f(2,1,-3)), corners[7]}, (byte) 16);
 
         //Back Of Skull
           backRight = new CurrencyLine(new Vector3f[]{corners[4],axis.add(new Vector3f(0,1.5f,-4)), axis.add( new Vector3f(0f,2.5f,-4)), corners[5]}, (byte)16);
