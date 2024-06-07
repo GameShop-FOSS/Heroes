@@ -14,6 +14,7 @@ import com.jme3.texture.image.ColorSpace;
 import com.jme3.util.BufferUtils;
 
 import java.nio.ByteBuffer;
+import java.util.HashMap;
 
 public class Head {
 
@@ -43,6 +44,8 @@ public class Head {
     public Vector3f axis; //
     public Node node;
 
+    public HashMap<String, Vector3f[]> exports;
+
     public Head(SimpleApplication app, Vector3f axis, Node node){
 
         this.app = app;
@@ -51,6 +54,7 @@ public class Head {
 
         this.node = node;
 
+        exports = new HashMap<>();
         addEdgeCurrencyLines();
         addFront();
         addBack();
@@ -120,6 +124,14 @@ public class Head {
         Texture2D texture2D = new Texture2D(image);
         front = new CurrencyMesh(app, new CurrencyLine[]{cl, cl1, cl2, cl3}, texture2D, node);
 
+
+        System.out.println("Front Dim: x:" + front.width +  " y:" + front.height);
+        exports.put("EyeRight", new Vector3f[]{
+                new Vector3f(front.getMeshFromValue(2,6).vertices[0]),
+                new Vector3f(front.getMeshFromValue(2,10).vertices[0]),
+                new Vector3f(front.getMeshFromValue(6,10).vertices[0]),
+                new Vector3f(front.getMeshFromValue(6,6).vertices[0]) // 4 right, 12 Up
+        });
     }
 
     public void addBack(){
@@ -228,7 +240,9 @@ public class Head {
         Texture2D texture2D = new Texture2D(image);
         bottom = new CurrencyMesh(app, new CurrencyLine[]{cl, cl1, cl2, cl3}, texture2D, node);
 
+        exports.put("Neck", mid);
     }
+
 
 
 

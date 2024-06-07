@@ -19,7 +19,7 @@ import java.nio.ByteBuffer;
 import java.util.Arrays;
 
 public class SimpleMesh {
-    Vector3f[] vertices;
+    public Vector3f[] vertices;
     Vector2f[] texCoord;
 
     public SimpleMesh(SimpleApplication app, Vector3f[] vertices, Vector2f[] texCoord, Texture2D texture2D, Node node){

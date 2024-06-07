@@ -49,16 +49,16 @@ public class Rune {
         headNode.attachChild(hairBottomRightNode);
 
 
-        Node eyeLeftNode = new Node("EyeLeft");
-        Eye eyeLeft = new Eye(app, new Vector3f(), eyeLeftNode);
-        eyeLeftNode.scale(.25f);
-        eyeLeftNode.move(.25f,1.25f,1f);
-        headNode.attachChild(eyeLeftNode);
+//        Node eyeLeftNode = new Node("EyeLeft");
+//        Eye eyeLeft = new Eye(app, new Vector3f(), eyeLeftNode);
+//        eyeLeftNode.scale(.25f);
+//        eyeLeftNode.move(.25f,1.25f,1f);
+//        headNode.attachChild(eyeLeftNode);
 
         Node eyeRightNode = new Node("EyeRight");
-        Eye eyeRight = new Eye(app, new Vector3f(), eyeRightNode);
-        eyeRightNode.scale(.25f);
-        eyeRightNode.move(1.75f,1.25f,1f);
+        Eye eyeRight = new Eye(app, new Vector3f(), eyeRightNode, head.exports.get("EyeRight"));
+        //eyeRightNode.scale(.25f);
+        eyeRightNode.move(0,0,0.1f);
         headNode.attachChild(eyeRightNode);
 
         //headNode.rotate(0,90,0);
