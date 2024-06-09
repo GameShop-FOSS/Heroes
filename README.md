@@ -42,6 +42,9 @@ The first script for Heroes was drafted 2 years ago.  It was intended to have an
 advantage of Google.  I am transitioning to an E Rated script.  The reason we are going E is because Ao is banned
 in most countries.
 
+Heroes is a game featuring a character named Rune who is a Superhuman Angel.  It is about the Rise of Superhumans on a
+local planet.
+
 ### In Closing
 
 Enjoy Heroes!
