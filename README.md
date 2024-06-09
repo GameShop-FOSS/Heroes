@@ -12,3 +12,9 @@ I am an Independent Developer.  GameShop Corp isnt a Corporation.  Its just the 
 What I am actually doing is Sole Proprietorship.  Please dont sue me.  The game is Free And Open Source 
 Software.  Please download it on Google to pay me.  Feel free to try it out on Github.  Github is mostly
 for Archiving.
+
+I am using a Cutting Edge technique that improves production 100x over.  It is called a Bezier Manifold.
+I can bravely claim that it is more advanced than Blender.  It is a way to 3D Model with Code.  Without having
+to use an editor like Maya Or Blender.  For all you know I came up with Blender.  The new style Im using is 
+more advanced than that.
+
