@@ -55,6 +55,7 @@ public class Head {
         this.node = node;
 
         exports = new HashMap<>();
+
         addEdgeCurrencyLines();
         addFront();
         addBack();
@@ -62,6 +63,8 @@ public class Head {
         addLeft();
         addTop();
         addBottom();
+
+        makeExports();
     }
 
     public void addEdgeCurrencyLines(){
@@ -126,19 +129,7 @@ public class Head {
 
 
         System.out.println("Front Dim: x:" + front.width +  " y:" + front.height);
-        exports.put("EyeRight", new Vector3f[]{
-                new Vector3f(front.getMeshFromValue(2,6).vertices[0]),
-                new Vector3f(front.getMeshFromValue(2,10).vertices[0]),
-                new Vector3f(front.getMeshFromValue(6,10).vertices[0]),
-                new Vector3f(front.getMeshFromValue(6,6).vertices[0]) // 4 right, 12 Up
-        });
 
-        exports.put("EyeLeft", new Vector3f[]{
-                new Vector3f(front.getMeshFromValue(10,6).vertices[0]),
-                new Vector3f(front.getMeshFromValue(10,10).vertices[0]),
-                new Vector3f(front.getMeshFromValue(14,10).vertices[0]),
-                new Vector3f(front.getMeshFromValue(14,6).vertices[0]) // 4 right, 12 Up
-        });
     }
 
     public void addBack(){
@@ -207,6 +198,7 @@ public class Head {
         left = new CurrencyMesh(app, new CurrencyLine[]{cl, cl1, cl2, cl3}, texture2D, node);
     }
 
+    //FLIPPED CL1 And CL2
     public void addTop(){
         Vector3f[] mid = new Vector3f[]{axis.add(new Vector3f(1,4.5f,-1)), axis.add(new Vector3f(2,4.5f,-1)), axis.add(new Vector3f(1,4.5f,-2)), axis.add(new Vector3f(2,4,-2)),};
         CurrencyLine cl = frontTop;
@@ -248,10 +240,30 @@ public class Head {
         Texture2D texture2D = new Texture2D(image);
         bottom = new CurrencyMesh(app, new CurrencyLine[]{cl, cl1, cl2, cl3}, texture2D, node);
 
-        exports.put("Neck", mid);
+
     }
 
+    public void makeExports(){
 
+        exports.put("EyeRight", new Vector3f[]{
+                new Vector3f(front.getMeshFromValue(2,6).vertices[0]),
+                new Vector3f(front.getMeshFromValue(2,10).vertices[0]),
+                new Vector3f(front.getMeshFromValue(6,10).vertices[0]),
+                new Vector3f(front.getMeshFromValue(6,6).vertices[0]) // 4 right, 12 Up
+        });
 
+        exports.put("EyeLeft", new Vector3f[]{
+                new Vector3f(front.getMeshFromValue(10,6).vertices[0]),
+                new Vector3f(front.getMeshFromValue(10,10).vertices[0]),
+                new Vector3f(front.getMeshFromValue(14,10).vertices[0]),
+                new Vector3f(front.getMeshFromValue(14,6).vertices[0]) // 4 right, 12 Up
+        });
 
+        exports.put("Neck", new Vector3f[]{
+                new Vector3f(bottom.getMeshFromValue(4,0).vertices[0]),
+                new Vector3f(bottom.getMeshFromValue(4,8).vertices[0]),
+                new Vector3f(bottom.getMeshFromValue(12,8).vertices[0]),
+                new Vector3f(bottom.getMeshFromValue(12,0).vertices[0])
+        });
+    }
 }

@@ -5,6 +5,7 @@ import com.gameshopcorp.heroes.graphics.CurrencyMesh;
 import com.gameshopcorp.heroes.graphics.Layer;
 import com.jme3.app.SimpleApplication;
 import com.jme3.math.ColorRGBA;
+import com.jme3.math.FastMath;
 import com.jme3.math.Vector3f;
 import com.jme3.scene.Node;
 import com.jme3.texture.Image;
@@ -13,88 +14,139 @@ import com.jme3.texture.image.ColorSpace;
 import com.jme3.util.BufferUtils;
 
 import java.nio.ByteBuffer;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Objects;
+
 public class SuperCube {
 
-    CurrencyMesh front;
-    CurrencyMesh back;
-    CurrencyMesh left;
-    CurrencyMesh right;
-    CurrencyMesh bottom;
-    CurrencyMesh top;
+//    CurrencyMesh front;
+//    CurrencyMesh back;
+//    CurrencyMesh left;
+//    CurrencyMesh right;
+//    CurrencyMesh bottom;
+//    CurrencyMesh top;
+
+    HashMap<String, CurrencyMesh> sides;
     SimpleApplication app;
 
-    CurrencyLine frontTop;
-    CurrencyLine frontBottom;
-    CurrencyLine frontRight;
-    CurrencyLine frontLeft;
+    HashMap<String, CurrencyLine> edges;
 
-    CurrencyLine backTop;
-    CurrencyLine backBottom;
-    CurrencyLine backRight;
-    CurrencyLine backLeft;
-
-    CurrencyLine topRight;
-    CurrencyLine topLeft;
-    CurrencyLine bottomLeft;
-    CurrencyLine bottomRight;
+//    CurrencyLine frontTop;
+//    CurrencyLine frontBottom;
+//    CurrencyLine frontRight;
+//    CurrencyLine frontLeft;
+//
+//    CurrencyLine backTop;
+//    CurrencyLine backBottom;
+//    CurrencyLine backRight;
+//    CurrencyLine backLeft;
+//
+//    CurrencyLine topRight;
+//    CurrencyLine topLeft;
+//    CurrencyLine bottomLeft;
+//    CurrencyLine bottomRight;
     public Vector3f axis;
     Node node;
-    public SuperCube(SimpleApplication app, Vector3f axis, Node node){
+
+    //public HashMap<String, Vector3f> imports;
+    public HashMap<String, Vector3f[]> exports;
+    public String[] renderSides;
+    public SuperCube(SimpleApplication app, Vector3f axis, Node node, HashMap<String, Vector3f> imports, String[] renderSides){
 
 
         this.app = app;
         this.axis = axis.add(new Vector3f(axis));
-
         this.node = node;
+        this.sides = new HashMap<>();
+        this.exports = new HashMap<>();
+        this.renderSides = renderSides;
+        this.edges = new HashMap<>();
 
-        addEdgeCurrencyLines();
-        addFront();
-        addBack();
-        addRight();
-        addLeft();
-        addTop();
-        addBottom();
+        Vector3f[] corners = new Vector3f[8];
+
+        if (imports == null){
+            corners = new Vector3f[]{
+                    //Front:0
+                    axis.add(new Vector3f(0,-0,0)),axis.add(new Vector3f(0,3f,0)), axis.add(new Vector3f(3,3,0)),axis.add(new Vector3f(3,-0,0)),
+                    //Back:4
+                    axis.add(new Vector3f(0,0,-3)), axis.add(new Vector3f(0,3,-3)),axis.add(new Vector3f(3,3,-3)), axis.add(new Vector3f(3,0,-3))};
+        } else {
+            corners = new Vector3f[]{
+                    //Front:0
+                    imports.get("frontBottomLeft"),imports.get("frontTopLeft"), imports.get("frontTopRight"),imports.get("frontBottomRight"),
+                    //Back:4
+                    imports.get("backBottomLeft"), imports.get("backTopLeft"),imports.get("backTopRight"), imports.get("backBottomRight")};
+
+        }
+        addEdgeCurrencyLines(corners);
+
+        if (Arrays.asList(renderSides).contains("all")) {
+            addFront();
+            addBack();
+            addRight();
+            addLeft();
+            addTop();
+            addBottom();
+        } else {
+
+            if (Arrays.asList(renderSides).contains("front")){
+                addFront();
+            }
+            if (Arrays.asList(renderSides).contains("back")){
+                addBack();
+            }
+            if (Arrays.asList(renderSides).contains("right")){
+                addRight();
+            }
+            if (Arrays.asList(renderSides).contains("left")){
+                addLeft();
+            }
+            if (Arrays.asList(renderSides).contains("top")){
+                addTop();
+            }
+            if (Arrays.asList(renderSides).contains("bottom")){
+                addBottom();
+            }
+
+        }
     }
-    public void addEdgeCurrencyLines(){
-        Vector3f[] corners = new Vector3f[]{
-                //Front:0
-                axis.add(new Vector3f(0,-0,0)),axis.add(new Vector3f(0,3f,0)), axis.add(new Vector3f(3,3,0)),axis.add(new Vector3f(3,-0,0)),
-                //Back:4
-                axis.add(new Vector3f(0,0,-3)), axis.add(new Vector3f(0,3,-3)),axis.add(new Vector3f(3,3,-3)), axis.add(new Vector3f(3,0,-3))};
+    public void addEdgeCurrencyLines(Vector3f[] corners){
 
         //Top Of Head
-        frontTop =  new CurrencyLine(new Vector3f[]{ corners[1], axis.add(new Vector3f(1,3,0)),  axis.add(new Vector3f(2,3f,0)), corners[2]}, (byte) 16);
+        edges.put("frontTop", new CurrencyLine(new Vector3f[]{ corners[1], FastMath.interpolateLinear(.33f, corners[1], corners[2]), FastMath.interpolateLinear(.66f, corners[1], corners[2]), corners[2]}, (byte) 16));
 
         //Chin
-        frontBottom = new CurrencyLine(new Vector3f[]{corners[0], axis.add(new Vector3f(1,0,0)), axis.add(new Vector3f(2,0,0)), corners[3]}, (byte) 16);;
+        edges.put("frontBottom", new CurrencyLine(new Vector3f[]{corners[0], FastMath.interpolateLinear(.33f, corners[0], corners[3]), FastMath.interpolateLinear(.66f, corners[0], corners[3]), corners[3]}, (byte) 16));
 
-        frontRight = new CurrencyLine(new Vector3f[]{corners[0],axis.add(new Vector3f(0,1,0)) , axis.add(new Vector3f(0,2,0)),corners[1]}, (byte) 16);
-        frontLeft = new CurrencyLine(new Vector3f[]{corners[3],axis.add(new Vector3f(3,1,0)) , axis.add(new Vector3f(3,2,0)), corners[2]}, (byte) 16);
+        edges.put("frontRight", new CurrencyLine(new Vector3f[]{corners[0],FastMath.interpolateLinear(.33f, corners[0], corners[1]) , FastMath.interpolateLinear(.66f, corners[0], corners[1]),corners[1]}, (byte) 16));
+        edges.put("frontLeft", new CurrencyLine(new Vector3f[]{corners[3],FastMath.interpolateLinear(.33f, corners[3], corners[2]) , FastMath.interpolateLinear(.66f, corners[3], corners[2]), corners[2]}, (byte) 16));
 
-        backTop = new CurrencyLine(new Vector3f[]{corners[5], axis.add(new Vector3f(1,3,-3)), axis.add(new Vector3f(2,3,-3)), corners[6] }, (byte) 16);
+        edges.put("backTop", new CurrencyLine(new Vector3f[]{corners[5], FastMath.interpolateLinear(.33f, corners[5], corners[6]), FastMath.interpolateLinear(.66f, corners[5], corners[6]), corners[6] }, (byte) 16));
 
         //Back Of Neck
-        backBottom = new CurrencyLine(new Vector3f[]{corners[4], axis.add(new Vector3f(1,0,-3)), axis.add(new Vector3f(2,0,-3)), corners[7]}, (byte) 16);;
+        edges.put("backBottom", new CurrencyLine(new Vector3f[]{corners[4], FastMath.interpolateLinear(.33f, corners[4], corners[7]), FastMath.interpolateLinear(.66f, corners[4], corners[7]), corners[7]}, (byte) 16));
 
         //Back Of Skull
-        backRight = new CurrencyLine(new Vector3f[]{corners[4],axis.add(new Vector3f(0,1,-3)),  axis.add(new Vector3f(0f,2,-3)), corners[5]}, (byte)16);
-        backLeft =  new CurrencyLine(new Vector3f[]{corners[7],axis.add(new Vector3f(3,1,-3)), axis.add(new Vector3f(3,2,-3)), corners[6]}, (byte)16);
+        edges.put("backRight",new CurrencyLine(new Vector3f[]{corners[4],FastMath.interpolateLinear(.33f, corners[4], corners[5]),  FastMath.interpolateLinear(.66f, corners[4], corners[5]), corners[5]}, (byte)16));
+        edges.put("backLeft", new CurrencyLine(new Vector3f[]{corners[7],FastMath.interpolateLinear(.33f, corners[7], corners[6]), FastMath.interpolateLinear(.66f, corners[7], corners[6]), corners[6]}, (byte)16));
 
-        topLeft = new CurrencyLine(new Vector3f[]{corners[6],   axis.add(new Vector3f(3,3,-2)), axis.add(new Vector3f(3f,3,-1)),corners[2]}, (byte)16);
-        topRight = new CurrencyLine(new Vector3f[]{corners[5],axis.add(new Vector3f(0,3,-2)), axis.add(new Vector3f(0,3,-1)),corners[1]}, (byte)16);
+        edges.put("topLeft",new CurrencyLine(new Vector3f[]{corners[6],FastMath.interpolateLinear(.33f, corners[6], corners[2]), FastMath.interpolateLinear(.66f, corners[6], corners[2]),corners[2]}, (byte)16));
+        edges.put("topRight", new CurrencyLine(new Vector3f[]{corners[5],FastMath.interpolateLinear(.33f, corners[5], corners[1]), FastMath.interpolateLinear(.66f, corners[5], corners[1]),corners[1]}, (byte)16));
 
         //Chin Sides
-        bottomLeft = new CurrencyLine(new Vector3f[]{corners[7],axis.add(new Vector3f(3,0,-2)),axis.add(new Vector3f(3,0,-1)),corners[3] }, (byte)16) ;
-        bottomRight = new CurrencyLine(new Vector3f[]{corners[4],axis.add(new Vector3f(0,0,-2)),axis.add(new Vector3f(0,0,-1)),corners[0] }, (byte)16) ;
+        edges.put("bottomLeft", new CurrencyLine(new Vector3f[]{corners[7],FastMath.interpolateLinear(.33f, corners[7], corners[3]),FastMath.interpolateLinear(.66f, corners[7], corners[3]),corners[3] }, (byte)16));
+        edges.put("bottomRight", new CurrencyLine(new Vector3f[]{corners[4],FastMath.interpolateLinear(.33f, corners[4], corners[0]),FastMath.interpolateLinear(.66f, corners[4], corners[0]),corners[0] }, (byte)16));
 
     }
     public void addFront(){
 
-        Vector3f[] mid = new Vector3f[]{axis.add(new Vector3f(1,1,0f)), axis.add(new Vector3f(2,1,0f)), axis.add(new Vector3f(1,2,0f)), axis.add(new Vector3f(2,2,0f)),};
-        CurrencyLine cl = frontBottom;
-        CurrencyLine cl1 = new CurrencyLine(new Vector3f[]{axis.add(new Vector3f(frontRight.points[1])),mid[0], mid[1], axis.add(new Vector3f(frontLeft.points[1]))}, (byte) 16);
-        CurrencyLine cl2 = new CurrencyLine(new Vector3f[]{axis.add(new Vector3f(frontRight.points[2])), mid[2], mid[3], axis.add(new Vector3f(frontLeft.points[2]))}, (byte) 16);
-        CurrencyLine cl3 = frontTop;
+        //Vector3f[] mid = new Vector3f[]{axis.add(new Vector3f(1,1,0f)), axis.add(new Vector3f(2,1,0f)), axis.add(new Vector3f(1,2,0f)), axis.add(new Vector3f(2,2,0f)),};
+       // FastMath.interpolateLinear(.33f, frontRight.points[1], frontLeft.points[1]);
+        CurrencyLine cl = edges.get("frontBottom");
+        CurrencyLine cl1 = new CurrencyLine(new Vector3f[]{Objects.requireNonNull(edges.get("frontRight")).points[1], FastMath.interpolateLinear(.33f, Objects.requireNonNull(edges.get("frontRight")).points[1], Objects.requireNonNull(edges.get("frontLeft")).points[1]),  FastMath.interpolateLinear(.66f, Objects.requireNonNull(edges.get("frontRight")).points[1], Objects.requireNonNull(edges.get("frontLeft")).points[1]), Objects.requireNonNull(edges.get("frontLeft")).points[1]}, (byte) 16);
+        CurrencyLine cl2 = new CurrencyLine(new Vector3f[]{Objects.requireNonNull(edges.get("frontRight")).points[2], FastMath.interpolateLinear(.33f, Objects.requireNonNull(edges.get("frontRight")).points[2], Objects.requireNonNull(edges.get("frontLeft")).points[2]),  FastMath.interpolateLinear(.66f, Objects.requireNonNull(edges.get("frontRight")).points[2], Objects.requireNonNull(edges.get("frontLeft")).points[2]), Objects.requireNonNull(edges.get("frontLeft")).points[2]}, (byte) 16);
+        CurrencyLine cl3 = edges.get("frontTop");
         Layer layer= new Layer((short) 128, (short) 128);
         layer.drawCircle((short) 63, (short) 63, (short) 128, ColorRGBA.fromRGBA255(255,215,175,255));
 
@@ -110,17 +162,17 @@ public class SuperCube {
         // ByteBuffer data = BufferUtils.createByteBuffer((byte)0,(byte)127,(byte)0,(byte)62);
         Image image = new Image(Image.Format.RGBA8, 128, 128, data, ColorSpace.Linear);
         Texture2D texture2D = new Texture2D(image);
-        front = new CurrencyMesh(app, new CurrencyLine[]{cl, cl1, cl2, cl3}, texture2D, node);
+        sides.put("front", new CurrencyMesh(app, new CurrencyLine[]{cl, cl1, cl2, cl3}, texture2D, node));
 
     }
 
     public void addBack(){
 
-        Vector3f[] mid = new Vector3f[]{axis.add(new Vector3f(2,1,-3)), axis.add(new Vector3f(1,1,-3)), axis.add(new Vector3f(2,2,-3)), axis.add(new Vector3f(1,2,-3))};
-        CurrencyLine cl = backBottom;
-        CurrencyLine cl1 = new CurrencyLine(new Vector3f[]{axis.add(new Vector3f(backRight.points[1])), mid[0], mid[1] , axis.add(new Vector3f(backLeft.points[1]))}, (byte) 16);
-        CurrencyLine cl2 = new CurrencyLine(new Vector3f[]{axis.add(new Vector3f(backRight.points[2])), mid[2], mid[3] , axis.add(new Vector3f(backLeft.points[2]))}, (byte) 16);
-        CurrencyLine cl3 = backTop;
+        //Vector3f[] mid = new Vector3f[]{axis.add(new Vector3f(2,1,-3)), axis.add(new Vector3f(1,1,-3)), axis.add(new Vector3f(2,2,-3)), axis.add(new Vector3f(1,2,-3))};
+        CurrencyLine cl = edges.get("backBottom"); //backRight, backLeft
+        CurrencyLine cl1 = new CurrencyLine(new Vector3f[]{Objects.requireNonNull(edges.get("backRight")).points[1], FastMath.interpolateLinear(.33f, Objects.requireNonNull(edges.get("backRight")).points[1], Objects.requireNonNull(edges.get("backLeft")).points[1]),  FastMath.interpolateLinear(.66f, Objects.requireNonNull(edges.get("backRight")).points[1], Objects.requireNonNull(edges.get("backLeft")).points[1]), Objects.requireNonNull(edges.get("backLeft")).points[1]}, (byte) 16);
+        CurrencyLine cl2 = new CurrencyLine(new Vector3f[]{Objects.requireNonNull(edges.get("backRight")).points[2], FastMath.interpolateLinear(.33f, Objects.requireNonNull(edges.get("backRight")).points[2], Objects.requireNonNull(edges.get("backLeft")).points[2]),  FastMath.interpolateLinear(.66f, Objects.requireNonNull(edges.get("backRight")).points[2], Objects.requireNonNull(edges.get("backRight")).points[2]), Objects.requireNonNull(edges.get("backLeft")).points[2]}, (byte) 16);
+        CurrencyLine cl3 = edges.get("backTop");
 
         Layer layer = new Layer((short) 128, (short) 128);
         layer.drawCircle((short) 63, (short) 63, (short) 128, ColorRGBA.fromRGBA255(255,215,175,255));
@@ -134,16 +186,16 @@ public class SuperCube {
         // ByteBuffer data = BufferUtils.createByteBuffer((byte)0,(byte)127,(byte)0,(byte)62);
         Image image = new Image(Image.Format.RGBA8, 128, 128, data, ColorSpace.Linear);
         Texture2D texture2D = new Texture2D(image);
-        back = new CurrencyMesh(app, new CurrencyLine[]{cl, cl1, cl2, cl3}, texture2D, node);
+        sides.put("back", new CurrencyMesh(app, new CurrencyLine[]{cl, cl1, cl2, cl3}, texture2D, node));
 
     }
 
     public void addRight(){
-        Vector3f[] mid = new Vector3f[]{axis.add(new Vector3f(0f,1,-2)), axis.add(new Vector3f(0,1, -1)), axis.add(new Vector3f(0,2,-2)), axis.add(new Vector3f(0,2,-1)), };
-        CurrencyLine cl = bottomRight;
-        CurrencyLine cl1 = new CurrencyLine(new Vector3f[]{axis.add(new Vector3f(backRight.points[1])), mid[0], mid[1], axis.add(new Vector3f(frontRight.points[1]))}, (byte) 16);
-        CurrencyLine cl2 = new CurrencyLine(new Vector3f[]{axis.add(new Vector3f(backRight.points[2])), mid[2], mid[3], axis.add(new Vector3f(frontRight.points[2]))}, (byte) 16);
-        CurrencyLine cl3 = topRight;
+       // Vector3f[] mid = new Vector3f[]{axis.add(new Vector3f(0f,1,-2)), axis.add(new Vector3f(0,1, -1)), axis.add(new Vector3f(0,2,-2)), axis.add(new Vector3f(0,2,-1)), };
+        CurrencyLine cl = edges.get("bottomRight");//backRight, frontRignh
+        CurrencyLine cl1 = new CurrencyLine(new Vector3f[]{Objects.requireNonNull(edges.get("backRight")).points[1], FastMath.interpolateLinear(.33f, Objects.requireNonNull(edges.get("backRight")).points[1], Objects.requireNonNull(edges.get("frontRight")).points[1]),  FastMath.interpolateLinear(.66f, Objects.requireNonNull(edges.get("backRight")).points[1], Objects.requireNonNull(edges.get("frontRight")).points[1]), Objects.requireNonNull(edges.get("frontRight")).points[1]}, (byte) 16);
+        CurrencyLine cl2 = new CurrencyLine(new Vector3f[]{Objects.requireNonNull(edges.get("backRight")).points[2], FastMath.interpolateLinear(.33f, Objects.requireNonNull(edges.get("backRight")).points[2], Objects.requireNonNull(edges.get("frontRight")).points[2]),  FastMath.interpolateLinear(.66f, Objects.requireNonNull(edges.get("backRight")).points[2], Objects.requireNonNull(edges.get("frontRight")).points[2]), Objects.requireNonNull(edges.get("frontRight")).points[2]}, (byte) 16);
+        CurrencyLine cl3 = edges.get("topRight");
 
         Layer layer= new Layer((short) 128, (short) 128);
         layer.drawCircle((short) 63, (short) 63, (short) 128, ColorRGBA.fromRGBA255(255,215,175,255));
@@ -154,16 +206,16 @@ public class SuperCube {
         // ByteBuffer data = BufferUtils.createByteBuffer((byte)0,(byte)127,(byte)0,(byte)62);
         Image image = new Image(Image.Format.RGBA8, 128, 128, data, ColorSpace.Linear);
         Texture2D texture2D = new Texture2D(image);
-        right = new CurrencyMesh(app, new CurrencyLine[]{cl, cl1, cl2, cl3}, texture2D, node);
+        sides.put("right", new CurrencyMesh(app, new CurrencyLine[]{cl, cl1, cl2, cl3}, texture2D, node));
     }
 
     public void addLeft(){
 
-        Vector3f[] mid = new Vector3f[]{ axis.add(new Vector3f(3f,1,-2)), axis.add(new Vector3f(3,1,-1)), axis.add(new Vector3f(3,2,-2)), axis.add(new Vector3f(3,2,-1)) };
-        CurrencyLine cl = bottomLeft;
-        CurrencyLine cl1 = new CurrencyLine(new Vector3f[]{axis.add(new Vector3f(backLeft.points[0])), mid[0], mid[1], axis.add(new Vector3f(frontLeft.points[0])),}, (byte) 16);
-        CurrencyLine cl2 = new CurrencyLine(new Vector3f[]{axis.add(new Vector3f(backLeft.points[3])), mid[2], mid[3], axis.add(new Vector3f(frontLeft.points[3])),}, (byte) 16);
-        CurrencyLine cl3 = topLeft;
+        //Vector3f[] mid = new Vector3f[]{ axis.add(new Vector3f(3f,1,-2)), axis.add(new Vector3f(3,1,-1)), axis.add(new Vector3f(3,2,-2)), axis.add(new Vector3f(3,2,-1)) };
+        CurrencyLine cl = edges.get("bottomLeft");//backLeft, frontLeft
+        CurrencyLine cl1 = new CurrencyLine(new Vector3f[]{Objects.requireNonNull(edges.get("backLeft")).points[1], FastMath.interpolateLinear(.33f, Objects.requireNonNull(edges.get("backLeft")).points[1], Objects.requireNonNull(edges.get("frontLeft")).points[1]),  FastMath.interpolateLinear(.66f, Objects.requireNonNull(edges.get("backLeft")).points[1], Objects.requireNonNull(edges.get("frontLeft")).points[1]), Objects.requireNonNull(edges.get("frontLeft")).points[1]}, (byte) 16);
+        CurrencyLine cl2 = new CurrencyLine(new Vector3f[]{Objects.requireNonNull(edges.get("backLeft")).points[2], FastMath.interpolateLinear(.33f, Objects.requireNonNull(edges.get("backLeft")).points[2], Objects.requireNonNull(edges.get("frontLeft")).points[2]),  FastMath.interpolateLinear(.66f, Objects.requireNonNull(edges.get("backLeft")).points[2], Objects.requireNonNull(edges.get("frontLeft")).points[2]), Objects.requireNonNull(edges.get("frontLeft")).points[2]}, (byte) 16);
+        CurrencyLine cl3 = edges.get("topLeft");
 
         Layer layer= new Layer((short) 128, (short) 128);
         layer.drawCircle((short) 63, (short) 63, (short) 128, ColorRGBA.fromRGBA255(255,215,175,255));
@@ -176,15 +228,15 @@ public class SuperCube {
         // ByteBuffer data = BufferUtils.createByteBuffer((byte)0,(byte)127,(byte)0,(byte)62);
         Image image = new Image(Image.Format.RGBA8, 128, 128, data, ColorSpace.Linear);
         Texture2D texture2D = new Texture2D(image);
-        left = new CurrencyMesh(app, new CurrencyLine[]{cl, cl1, cl2, cl3}, texture2D, node);
+        sides.put("left", new CurrencyMesh(app, new CurrencyLine[]{cl, cl1, cl2, cl3}, texture2D, node));
     }
 
     public void addTop(){
-        Vector3f[] mid = new Vector3f[]{axis.add(new Vector3f(1,3,-1)), axis.add(new Vector3f(2,3,-1)),axis.add(new Vector3f(1,3,-2)), axis.add(new Vector3f(2,3,-2)),};
-        CurrencyLine cl = frontTop;
-        CurrencyLine cl1 = new CurrencyLine(new Vector3f[]{topRight.points[1], mid[0], mid[1],  topLeft.points[1]}, (byte) 16);
-        CurrencyLine cl2 = new CurrencyLine(new Vector3f[]{topRight.points[2], mid[2], mid[3],  topLeft.points[2]}, (byte) 16);
-        CurrencyLine cl3 = backTop;
+        //Vector3f[] mid = new Vector3f[]{axis.add(new Vector3f(1,3,-1)), axis.add(new Vector3f(2,3,-1)),axis.add(new Vector3f(1,3,-2)), axis.add(new Vector3f(2,3,-2)),};
+        CurrencyLine cl = edges.get("frontTop"); //topRight, topLeft
+        CurrencyLine cl1 = new CurrencyLine(new Vector3f[]{Objects.requireNonNull(edges.get("topRight")).points[2], FastMath.interpolateLinear(.33f, Objects.requireNonNull(edges.get("topRight")).points[2], Objects.requireNonNull(edges.get("topLeft")).points[2]),  FastMath.interpolateLinear(.66f, Objects.requireNonNull(edges.get("topRight")).points[2], Objects.requireNonNull(edges.get("topLeft")).points[2]), Objects.requireNonNull(edges.get("topLeft")).points[2]}, (byte) 16);
+        CurrencyLine cl2 = new CurrencyLine(new Vector3f[]{Objects.requireNonNull(edges.get("topRight")).points[1], FastMath.interpolateLinear(.33f, Objects.requireNonNull(edges.get("topRight")).points[1], Objects.requireNonNull(edges.get("topLeft")).points[1]),  FastMath.interpolateLinear(.66f, Objects.requireNonNull(edges.get("topRight")).points[1], Objects.requireNonNull(edges.get("topLeft")).points[1]), Objects.requireNonNull(edges.get("topLeft")).points[1]}, (byte) 16);
+        CurrencyLine cl3 = edges.get("backTop");
 
         Layer layer= new Layer((short) 128, (short) 128);
         layer.drawCircle((short) 63, (short) 63, (short) 128, ColorRGBA.fromRGBA255(255,215,175,255));
@@ -195,16 +247,16 @@ public class SuperCube {
         // ByteBuffer data = BufferUtils.createByteBuffer((byte)0,(byte)127,(byte)0,(byte)62);
         Image image = new Image(Image.Format.RGBA8, 128, 128, data, ColorSpace.Linear);
         Texture2D texture2D = new Texture2D(image);
-        top = new CurrencyMesh(app, new CurrencyLine[]{cl, cl1, cl2, cl3}, texture2D, node);
+        sides.put("top", new CurrencyMesh(app, new CurrencyLine[]{cl, cl1, cl2, cl3}, texture2D, node));
 
     }
 
     public void addBottom(){
-        Vector3f[] mid = new Vector3f[]{axis.add(new Vector3f(1,0,-2)), axis.add(new Vector3f(2,0,-2)),axis.add(new Vector3f(1,0,-1)), axis.add(new Vector3f(2,0,-1))};
-        CurrencyLine cl = backBottom;
-        CurrencyLine cl1 = new CurrencyLine(new Vector3f[]{bottomRight.points[1], mid[0], mid[1],  bottomLeft.points[1]}, (byte) 16);
-        CurrencyLine cl2 = new CurrencyLine(new Vector3f[]{bottomRight.points[2], mid[2], mid[3] , bottomLeft.points[2]}, (byte) 16);
-        CurrencyLine cl3 = frontBottom;
+        //Vector3f[] mid = new Vector3f[]{axis.add(new Vector3f(1,0,-2)), axis.add(new Vector3f(2,0,-2)),axis.add(new Vector3f(1,0,-1)), axis.add(new Vector3f(2,0,-1))};
+        CurrencyLine cl = edges.get("backBottom");//bottomRight, bottomLeft
+        CurrencyLine cl1 = new CurrencyLine(new Vector3f[]{Objects.requireNonNull(edges.get("bottomRight")).points[1], FastMath.interpolateLinear(.33f, Objects.requireNonNull(edges.get("bottomRight")).points[1], Objects.requireNonNull(edges.get("bottomLeft")).points[1]),  FastMath.interpolateLinear(.66f, Objects.requireNonNull(edges.get("bottomRight")).points[1], Objects.requireNonNull(edges.get("bottomLeft")).points[1]), Objects.requireNonNull(edges.get("bottomLeft")).points[1]}, (byte) 16);
+        CurrencyLine cl2 = new CurrencyLine(new Vector3f[]{Objects.requireNonNull(edges.get("bottomRight")).points[2], FastMath.interpolateLinear(.33f, Objects.requireNonNull(edges.get("bottomRight")).points[2], Objects.requireNonNull(edges.get("bottomLeft")).points[2]),  FastMath.interpolateLinear(.66f, Objects.requireNonNull(edges.get("bottomRight")).points[2], Objects.requireNonNull(edges.get("bottomLeft")).points[2]), Objects.requireNonNull(edges.get("bottomLeft")).points[2]}, (byte) 16);
+        CurrencyLine cl3 = edges.get("frontBottom");
 
         Layer layer= new Layer((short) 128, (short) 128);
         layer.drawCircle((short) 63, (short) 63, (short) 128, ColorRGBA.fromRGBA255(255,215,175,255));
@@ -218,7 +270,7 @@ public class SuperCube {
         // ByteBuffer data = BufferUtils.createByteBuffer((byte)0,(byte)127,(byte)0,(byte)62);
         Image image = new Image(Image.Format.RGBA8, 128, 128, data, ColorSpace.Linear);
         Texture2D texture2D = new Texture2D(image);
-        bottom = new CurrencyMesh(app, new CurrencyLine[]{cl, cl1, cl2, cl3}, texture2D, node);
+        sides.put("bottom", new CurrencyMesh(app, new CurrencyLine[]{cl, cl1, cl2, cl3}, texture2D, node));
 
     }
 }

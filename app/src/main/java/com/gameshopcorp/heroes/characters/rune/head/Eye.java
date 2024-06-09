@@ -77,10 +77,10 @@ public class Eye {
 //                axis.add(new Vector3f(.5f,.5f,-2.5f)), axis.add(new Vector3f(.5f,2.5f,-2.5f)),axis.add(new Vector3f(2.5f,2.5f,-2.5f)), axis.add(new Vector3f(2.5f,.5f,-2.5f))};
 
     //Top Of Head
-        frontTop =  new CurrencyLine(new Vector3f[]{ corners[1], FastMath.interpolateLinear(.33f, corners[1], corners[2]),  FastMath.interpolateLinear(.66f, corners[1], corners[2]), corners[2]}, (byte) 16);
+        frontTop =  new CurrencyLine(new Vector3f[]{ corners[1], FastMath.interpolateLinear(.33f, corners[1], corners[2]).add(0,.25f,0),  FastMath.interpolateLinear(.66f, corners[1], corners[2]).add(0,.25f,0), corners[2]}, (byte) 16);
 
         //Chin
-        frontBottom = new CurrencyLine(new Vector3f[]{corners[0], FastMath.interpolateLinear(.33f, corners[0], corners[3]), FastMath.interpolateLinear(.66f, corners[0], corners[3]), corners[3]}, (byte) 16);;
+        frontBottom = new CurrencyLine(new Vector3f[]{corners[0], FastMath.interpolateLinear(.33f, corners[0], corners[3]).add(0,-.125f,0), FastMath.interpolateLinear(.66f, corners[0], corners[3]).add(0,-.125f, 0), corners[3]}, (byte) 16);;
 
         frontRight = new CurrencyLine(new Vector3f[]{corners[0],FastMath.interpolateLinear(.33f, corners[0], corners[1]) , FastMath.interpolateLinear(.66f, corners[0], corners[1]),corners[1]}, (byte) 16);
         frontLeft = new CurrencyLine(new Vector3f[]{corners[3],FastMath.interpolateLinear(.33f, corners[3], corners[2]) , FastMath.interpolateLinear(.66f, corners[3], corners[2]), corners[2]}, (byte) 16);

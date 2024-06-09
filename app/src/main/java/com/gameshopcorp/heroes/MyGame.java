@@ -7,6 +7,7 @@ import com.gameshopcorp.heroes.graphics.ATMS;
 import com.gameshopcorp.heroes.graphics.CurrencyLine;
 import com.gameshopcorp.heroes.graphics.CurrencyMesh;
 import com.gameshopcorp.heroes.graphics.Layer;
+import com.gameshopcorp.heroes.graphics.SuperCube;
 import com.jme3.app.SimpleApplication;
 import com.jme3.collision.CollisionResults;
 import com.jme3.cursors.plugins.JmeCursor;
@@ -75,6 +76,7 @@ public final class MyGame extends SimpleApplication {
     public void simpleInitApp() {
         flyCam.setEnabled(true);
         Rune rune = new Rune(this);
+        //SuperCube superCube = new SuperCube(this, new Vector3f(), getRootNode(), null, new String[]{"all"});
         getViewPort().setBackgroundColor(ColorRGBA.Black);
         GeometryBatchFactory.optimize(getRootNode());
     }
