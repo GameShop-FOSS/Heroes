@@ -132,6 +132,13 @@ public class Head {
                 new Vector3f(front.getMeshFromValue(6,10).vertices[0]),
                 new Vector3f(front.getMeshFromValue(6,6).vertices[0]) // 4 right, 12 Up
         });
+
+        exports.put("EyeLeft", new Vector3f[]{
+                new Vector3f(front.getMeshFromValue(10,6).vertices[0]),
+                new Vector3f(front.getMeshFromValue(10,10).vertices[0]),
+                new Vector3f(front.getMeshFromValue(14,10).vertices[0]),
+                new Vector3f(front.getMeshFromValue(14,6).vertices[0]) // 4 right, 12 Up
+        });
     }
 
     public void addBack(){

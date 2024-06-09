@@ -5,11 +5,14 @@ import com.gameshopcorp.heroes.graphics.CurrencyLine;
 import com.gameshopcorp.heroes.graphics.CurrencyMesh;
 import com.gameshopcorp.heroes.graphics.Layer;
 import com.jme3.app.SimpleApplication;
+import com.jme3.asset.AssetKey;
 import com.jme3.math.ColorRGBA;
 import com.jme3.math.FastMath;
+import com.jme3.math.Vector2f;
 import com.jme3.math.Vector3f;
 import com.jme3.scene.Node;
 import com.jme3.texture.Image;
+import com.jme3.texture.Texture;
 import com.jme3.texture.Texture2D;
 import com.jme3.texture.image.ColorSpace;
 import com.jme3.util.BufferUtils;
@@ -107,23 +110,25 @@ public class Eye {
         CurrencyLine cl1 = new CurrencyLine(new Vector3f[]{axis.add(new Vector3f(frontRight.points[1])), FastMath.interpolateLinear(.33f, frontRight.points[1], frontLeft.points[1]).add(0,0,.2f),  FastMath.interpolateLinear(.66f, frontRight.points[1], frontLeft.points[1]).add(0,0,.2f), axis.add(new Vector3f(frontLeft.points[1]))}, (byte) 16);
         CurrencyLine cl2 = new CurrencyLine(new Vector3f[]{axis.add(new Vector3f(frontRight.points[2])),  FastMath.interpolateLinear(.33f, frontRight.points[2], frontLeft.points[2]).add(0,0,.2f),  FastMath.interpolateLinear(.66f, frontRight.points[2], frontLeft.points[2]).add(0,0,.2f), axis.add(new Vector3f(frontLeft.points[2]))}, (byte) 16);
         CurrencyLine cl3 = frontTop;
-        Layer layer= new Layer((short) 128, (short) 128);
-        layer.drawCircle((short) 63, (short) 63, (short) 128, ColorRGBA.fromRGBA255(255,255,255,255));
+        //Layer layer= new Layer((short) 32, (short) 32);
+        //layer.drawCircle((short) 16, (short) 16, (short) 32, ColorRGBA.fromRGBA255(255,255,255,255));
 
         //DRAW FEACHURES
        // layer.drawCircle((short) 25, (short) 25, (short) 4, ColorRGBA.fromRGBA255(255,225,185,255));
 
-        layer.drawCircle((short) 63, (short) 63, (short) 45, ColorRGBA.fromRGBA255(65,145,208,255));
+       // layer.drawCircle((short) 8, (short) 16, (short) 8, ColorRGBA.fromRGBA255(65,145,208,255));
         //DRILL COLOR CODE
-        layer.drawCircle((short) 63, (short) 63, (short) 32, ColorRGBA.fromRGBA255(0,0,0,255));
+        // layer.drawCircle((short) 8, (short) 16, (short) 4, ColorRGBA.fromRGBA255(0,0,0,255));
 
-        ATMS atms = new ATMS((byte) 1, layer);
+        //layer.drawLine(new Vector2f(16,24), new Vector2f(16, 8), (short) 4, ColorRGBA.fromRGBA255(0,0,0,255));
+        //ATMS atms = new ATMS((byte) 1, layer);
         //atmsFront.frames[0] = layerFront;
-        ByteBuffer data = BufferUtils.createByteBuffer(atms.frames[0].outputLayer());
+        //ByteBuffer data = BufferUtils.createByteBuffer(atms.frames[0].outputLayer());
         // ByteBuffer data = BufferUtils.createByteBuffer((byte)0,(byte)127,(byte)0,(byte)62);
-        Image image = new Image(Image.Format.RGBA8, 128, 128, data, ColorSpace.Linear);
-        Texture2D texture2D = new Texture2D(image);
-        front = new CurrencyMesh(app, new CurrencyLine[]{cl, cl1, cl2, cl3}, texture2D, node);
+        //Image image = new Image(Image.Format.RGBA8, layer.width, layer.height, data, ColorSpace.Linear);
+
+        Texture2D texture =  (Texture2D) app.getAssetManager().loadTexture("Textures/RuneEye.jpg");
+        front = new CurrencyMesh(app, new CurrencyLine[]{cl, cl1, cl2, cl3}, texture, node);
 
     }
 

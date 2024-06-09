@@ -13,8 +13,8 @@ public class Layer {
 
     public byte[][] layer;
 
-    short width;
-    short height;
+    public short width;
+    public short height;
     //512 x 512 [recommended]
     public Layer(short width, short height){
 
@@ -66,13 +66,13 @@ public class Layer {
 //        System.out.println("EndX " + endX);
 //
 //        System.out.println("EndY " + endY);
-        for (short y = startY; y <= endY; y++){
+        for (short y = startY; y < endY; y++){
 
-            for (short x = (short) (startX * 4); x <= endX * 4; x += 4) {
-                layer[y][x] = (byte) (color.getColorArray()[0] * 127);
-                layer[y][(x) + 1]  = (byte) (color.getColorArray()[1] * 127);
-                layer[y][(x) + 2] = (byte) (color.getColorArray()[2] * 127);
-                layer[y][(x) + 3]  = (byte) (color.getColorArray()[3] * 127);
+            for (short x = startX; x < endX; x++) {
+                layer[y][x] = (byte) (color.getColorArray()[0] * 255);
+                layer[y][(x) + 1]  = (byte) (color.getColorArray()[1] * 255);
+                layer[y][(x) + 2] = (byte) (color.getColorArray()[2] * 255);
+                layer[y][(x) + 3]  = (byte) (color.getColorArray()[3] * 255);
 //
             }
         }
@@ -152,7 +152,7 @@ public class Layer {
 //
             drawCircle((short)x, (short)y, radius, color);
             if (distX >= 1) {
-                System.out.println("x+ " + x);
+                //System.out.println("x+ " + x);
                 float addX = (FastMath.sqrt(FastMath.sqr(radius) - FastMath.sqr(radius/distX)));
 
                 if (Float.isNaN(x)){
@@ -162,7 +162,7 @@ public class Layer {
             }
 
             else if (distX <= -1) {
-                System.out.println("x- " + x);
+              //  System.out.println("x- " + x);
                 float addX = (FastMath.sqrt(FastMath.sqr(radius) - FastMath.sqr(FastMath.abs(radius/distX))));
                 if (Float.isNaN(x)){
                     continue;
@@ -171,7 +171,7 @@ public class Layer {
 
             }
             if (distY >= 1) {
-                System.out.println("y+ " + y);
+                //System.out.println("y+ " + y);
                 float addY = (FastMath.sqrt(FastMath.sqr(radius) - FastMath.sqr(radius/distY)));
                 if (Float.isNaN(y)){
                     continue;
@@ -180,7 +180,7 @@ public class Layer {
             }
 
             else if (distY <= -1) {
-                System.out.println("y- " + y);
+               // System.out.println("y- " + y);
                 float addY = (FastMath.sqrt(FastMath.sqr(radius) - FastMath.sqr(FastMath.abs(radius/distY))));
                 if (Float.isNaN(y)){
                     continue;
