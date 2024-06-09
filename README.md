@@ -43,7 +43,7 @@ advantage of Google.  I am transitioning to an E Rated script.  The reason we ar
 in most countries.
 
 Heroes is a game featuring a character named Rune who is a Superhuman Angel.  It is about the Rise of Superhumans on a
-local planet.
+local planet.  Runes enemy will be Goyle.  Goyle looks similar to the mascot of Github.
 
 ### In Closing
 
