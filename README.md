@@ -18,3 +18,10 @@ I can bravely claim that it is more advanced than Blender.  It is a way to 3D Mo
 to use an editor like Maya Or Blender.  For all you know I came up with Blender.  The new style Im using is 
 more advanced than that.
 
+I refer to it in the code as CurrencyMesh.  This is how I use the Bezier Manifold.  Greatest props to Pierre Bezier.
+Rest in Peace.  September 1st, 1910 to November 25th, 1999.  If it werent for Bezier I dont know what Id do.  This
+equation didnt exist before the 1960s.  It is an honor for me to use it for Video Game Programming.
+
+I also have a few other techniques I am using.  Custom textures.  No need for Photoshop.  Every texture will be made
+on the spot.  I am making my own custom formats for that.  No need for Photoshop, Gimp, or Blender.
+
