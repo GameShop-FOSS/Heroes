@@ -38,12 +38,18 @@ with Unreal.
 
 ### What Is Heroes About?
 
-The first script for Heroes was drafted 2 years ago.  It was intended to have an Ao Rating for Adults Only to take
-advantage of Google.  I am transitioning to an E Rated script.  The reason we are going E is because Ao is banned
-in most countries.
+The first script for Heroes was drafted 2 years ago.  It was a 20 page script that focused on themes for mature viewers.  
+It was intended to have an Ao Rating for Adults Only to take advantage of Google.  I am transitioning to an E Rated script.  
+The reason we are going E is because Ao is banned in most countries.
 
 Heroes is a game featuring a character named Rune who is a Superhuman Angel.  It is about the Rise of Superhumans on a
 local planet.  Runes enemy will be Goyle.  Goyle looks similar to the mascot of Github.
+
+The first script was about Rune who wanted to sell things as an Entreprenuer.  Sort of a play on Angel Investors.  And Goyle
+who wanted to Unite the People.  Goyle is a lil more complicated.
+
+I am drafting a new script for the game.  The roles will be the same.  I want to get a gist of how the game dev will be.  Before I
+start making a new script.  I want to see what I can get away with before making the script E Rated.
 
 ### In Closing
 
