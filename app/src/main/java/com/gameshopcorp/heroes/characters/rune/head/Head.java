@@ -186,6 +186,7 @@ public class Head {
 
     public void addLeft(){
 
+        //bottomLeft, backLeft, topLeft
         Vector3f[] mid = new Vector3f[]{ axis.add(new Vector3f(4f,1,-2)), axis.add(new Vector3f(4,1,-1)), axis.add(new Vector3f(4,2,-2)), axis.add(new Vector3f(4,2,-1)) };
         CurrencyLine cl = bottomLeft;
         CurrencyLine cl1 = new CurrencyLine(new Vector3f[]{new Vector3f(backLeft.points[1]), mid[0], mid[1], new Vector3f(frontLeft.points[1]),}, (byte) 16);
@@ -209,8 +210,8 @@ public class Head {
     public void addTop(){
         Vector3f[] mid = new Vector3f[]{axis.add(new Vector3f(1,4.5f,-1)), axis.add(new Vector3f(2,4.5f,-1)), axis.add(new Vector3f(1,4.5f,-2)), axis.add(new Vector3f(2,4,-2)),};
         CurrencyLine cl = frontTop;
-        CurrencyLine cl1 = new CurrencyLine(new Vector3f[]{topRight.points[1], mid[0], mid[1],  topLeft.points[1]}, (byte) 16);
-        CurrencyLine cl2 = new CurrencyLine(new Vector3f[]{topRight.points[2], mid[2], mid[3],  topLeft.points[2]}, (byte) 16);
+        CurrencyLine cl1 = new CurrencyLine(new Vector3f[]{topRight.points[2], mid[0], mid[1],  topLeft.points[2]}, (byte) 16);
+        CurrencyLine cl2 = new CurrencyLine(new Vector3f[]{topRight.points[1], mid[2], mid[3],  topLeft.points[1]}, (byte) 16);
         CurrencyLine cl3 = backTop;
 
         Layer layer= new Layer((short) 128, (short) 128);

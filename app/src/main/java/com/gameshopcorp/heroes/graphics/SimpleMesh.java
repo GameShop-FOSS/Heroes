@@ -95,7 +95,7 @@ public class SimpleMesh {
 
         // Indexes. We define the order in which mesh should be constructed
         short[] indexes = {2, 0, 1, 1, 3, 2};
-        // ,2,3,1,1,0,2};
+         //,2,3,1,1,0,2};
 
 
 
