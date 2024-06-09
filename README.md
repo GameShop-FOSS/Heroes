@@ -2,7 +2,7 @@
 
 ## An action adventure epic coming to Google Play Early Access in July 2024
 
-### What is Heroes?
+### What Is Heroes?
 
 Heroes will be released Early Access in July 2024.  The expected full release date is Summer of 2025.
 It is expected to spend 1 Year in Early Access before the full release.  Looking forward to making 
@@ -35,3 +35,13 @@ on the spot.  I am making my own custom formats for that.  No need for Photoshop
 
 This is the pinnacle of 3D Model Programming.  There isnt anything better that exists in the world.  It can compete 
 with Unreal.
+
+### What Is Heroes About?
+
+The first script for Heroes was drafted 2 years ago.  It was intended to have an Ao Rating for Adults Only to take
+advantage of Google.  I am transitioning to an E Rated script.  The reason we are going E is because Ao is banned
+in most countries.
+
+### In Closing
+
+Enjoy Heroes!
