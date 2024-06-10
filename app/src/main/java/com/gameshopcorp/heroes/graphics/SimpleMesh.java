@@ -23,61 +23,12 @@ public class SimpleMesh {
     public Vector3f[] vertices;
     Vector2f[] texCoord;
 
-//    public SimpleMesh(SimpleApplication app, Vector3f[] vertices, Vector2f[] texCoord, Texture2D texture2D, Node node){
-//
-//        Mesh m = new Mesh();
-//
-//        // Vertex positions in space
-//        this.vertices = new Vector3f[4];
-//        this.vertices[0] = new Vector3f(vertices[0]);
-//        this.vertices[1] = new Vector3f(vertices[1]);
-//        this.vertices[2] = new Vector3f(vertices[2]);
-//        this.vertices[3] = new Vector3f(vertices[3]);
-//
-//        // Texture coordinates
-//        this.texCoord = new Vector2f[4];
-//        this.texCoord[0] = new Vector2f(texCoord[0]); // new Vector2f(0,0);
-//        this.texCoord[1] = new Vector2f(texCoord[1]);//new Vector2f(1,0);
-//        this.texCoord[2] = new Vector2f(texCoord[2]);//new Vector2f(0,1);
-//        this.texCoord[3] = new Vector2f(texCoord[3]);//new Vector2f(1,1);
-//
-//        // Indexes. We define the order in which mesh should be constructed
-//        short[] indexes = {2, 0, 1, 1, 3, 2};
-//                           // ,2,3,1,1,0,2};
-//
-//
-//
-//        // Setting buffers
-//        m.setBuffer(VertexBuffer.Type.Position, 3, BufferUtils.createFloatBuffer(this.vertices));
-//        m.setBuffer(VertexBuffer.Type.TexCoord, 2, BufferUtils.createFloatBuffer(this.texCoord));
-//        m.setBuffer(VertexBuffer.Type.Index, 1, BufferUtils.createShortBuffer(indexes));
-//
-//        m.updateBound();
-//
-//
-//        //*****RenderState*****
-//
-//        // *************************************************************************
-//        // First mesh uses one solid color
-//        // *************************************************************************
-//
-//        // Creating a geometry, and apply a single color material to it
-//        Geometry geom = new Geometry("OurMesh", m);
-//
-//        Material mat = new Material(app.getAssetManager(), "Common/MatDefs/Misc/Unshaded.j3md");
-//        mat.getAdditionalRenderState().setFaceCullMode(RenderState.FaceCullMode.Off);
-//        // mat.setColor("Color", ColorRGBA.fromRGBA255(255,255,255,255));
-//        mat.setTexture("ColorMap", texture2D);
-//        geom.setMaterial(mat);
-//
-//        // Attaching our geometry to the root node.
-//        //app.getRootNode().attachChild(geom);
-//        node.attachChild(geom);
-//    }
+    public Mesh m;
 
+    public Geometry geom;
     public SimpleMesh(SimpleApplication app, Vector3f[] vertices, Vector2f[] texCoord, Texture2D texture, Node node){
 
-        Mesh m = new Mesh();
+        m = new Mesh();
 
         // Vertex positions in space
         this.vertices = new Vector3f[4];
@@ -115,7 +66,8 @@ public class SimpleMesh {
         // *************************************************************************
 
         // Creating a geometry, and apply a single color material to it
-        Geometry geom = new Geometry("OurMesh", m);
+        this.geom = new Geometry("OurMesh", m);
+
 
         Material mat = new Material(app.getAssetManager(), "Common/MatDefs/Misc/Unshaded.j3md");
         mat.getAdditionalRenderState().setFaceCullMode(RenderState.FaceCullMode.Off);

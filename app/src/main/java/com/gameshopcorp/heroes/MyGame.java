@@ -76,8 +76,11 @@ public final class MyGame extends SimpleApplication {
     public void simpleInitApp() {
         flyCam.setEnabled(true);
         //for (int i = 0; i < 2; i++) {
-            Rune rune = new Rune(this);
-            GeometryBatchFactory.optimize(getRootNode());
+       // SuperCube superCube = new SuperCube(this, new Vector3f(), getRootNode(), null, new String[]{"front"});
+        //superCube.modCurrencyLine("front", (byte) 0, (byte) 0,new Vector3f(-4,0,0));
+
+         Rune rune = new Rune(this);
+         GeometryBatchFactory.optimize(getRootNode());
        // }
         //Publishing To Google Play Store
         //com.google.android.gms.permission.AD_ID

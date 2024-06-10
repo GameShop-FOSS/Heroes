@@ -7,7 +7,11 @@ public class CurrencyLine {
 
     public Vector3f[] points;
     public Vector3f[] infinitesimals;
+
+    byte numPoints;
     public CurrencyLine(Vector3f[] points, byte numPoints){
+
+        this.numPoints = numPoints;
 
         this.points = new Vector3f[4];
         this.points[0] = new Vector3f(points[0]);
@@ -22,6 +26,12 @@ public class CurrencyLine {
         }
     }
 
+    public void modCurrency(byte point, Vector3f newPoint){
 
+        this.points[point] = new Vector3f(newPoint);
+        for (int i = 0; i <= numPoints; i++){
+            infinitesimals[i] = new Vector3f(FastMath.interpolateBezier((float)i/numPoints, this.points[0], this.points[1], this.points[2], this.points[3]));
+        }
 
+    }
 }

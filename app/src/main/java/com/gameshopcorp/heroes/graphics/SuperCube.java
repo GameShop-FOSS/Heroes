@@ -14,38 +14,17 @@ import com.jme3.texture.image.ColorSpace;
 import com.jme3.util.BufferUtils;
 
 import java.nio.ByteBuffer;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Objects;
 
 public class SuperCube {
 
-//    CurrencyMesh front;
-//    CurrencyMesh back;
-//    CurrencyMesh left;
-//    CurrencyMesh right;
-//    CurrencyMesh bottom;
-//    CurrencyMesh top;
-
     HashMap<String, CurrencyMesh> sides;
     SimpleApplication app;
 
     HashMap<String, CurrencyLine> edges;
-
-//    CurrencyLine frontTop;
-//    CurrencyLine frontBottom;
-//    CurrencyLine frontRight;
-//    CurrencyLine frontLeft;
-//
-//    CurrencyLine backTop;
-//    CurrencyLine backBottom;
-//    CurrencyLine backRight;
-//    CurrencyLine backLeft;
-//
-//    CurrencyLine topRight;
-//    CurrencyLine topLeft;
-//    CurrencyLine bottomLeft;
-//    CurrencyLine bottomRight;
     public Vector3f axis;
     Node node;
 
@@ -273,4 +252,29 @@ public class SuperCube {
         sides.put("bottom", new CurrencyMesh(app, new CurrencyLine[]{cl, cl1, cl2, cl3}, texture2D, node));
 
     }
+
+    public void modCurrencyLine(String side,byte line, byte point, Vector3f newPoint){
+
+        for(CurrencyMesh cm: sides.values()){
+            int cli = 0;
+            for (CurrencyLine cl: cm.currencyLines){
+                int p = 0;
+                for (Vector3f v: cl.points){
+                    if (v.equals(Objects.requireNonNull(sides.get(side)).currencyLines[cli].points[point])){
+                        //store.add(v);
+                         cm.modCurrencyLine((byte) cli, (byte) p, newPoint);
+                    }
+                    p++;
+                }
+                cli++;
+            }
+        }
+        Objects.requireNonNull(sides.get(side)).modCurrencyLine(line, point, newPoint);
+
+    }
+
+    public void refresh(){
+
+    }
+
 }
