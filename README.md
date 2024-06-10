@@ -51,6 +51,8 @@ who wanted to Unite the People.  Goyle is a lil more complicated.
 I am drafting a new script for the game.  The roles will be the same.  I want to get a gist of how the game dev will be.  Before I
 start making a new script.  I want to see what I can get away with before making the script E Rated.
 
+It seems Ill go Ao for Adults Only
+
 ### In Closing
 
 Enjoy Heroes!
