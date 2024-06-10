@@ -39,6 +39,9 @@ public class CurrencyMesh {
 
     }
 
+    public void updateTexture(Texture2D texture){
+        this.texture = texture;
+    }
     public SimpleMesh getMeshFromValue(int x, int y){
 
         return  simpleMeshes[(this.vInfinitesimals[0].infinitesimals.length * x) + y];

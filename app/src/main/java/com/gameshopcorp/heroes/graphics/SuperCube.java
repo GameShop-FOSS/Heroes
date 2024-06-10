@@ -126,22 +126,22 @@ public class SuperCube {
         CurrencyLine cl1 = new CurrencyLine(new Vector3f[]{Objects.requireNonNull(edges.get("frontRight")).points[1], FastMath.interpolateLinear(.33f, Objects.requireNonNull(edges.get("frontRight")).points[1], Objects.requireNonNull(edges.get("frontLeft")).points[1]),  FastMath.interpolateLinear(.66f, Objects.requireNonNull(edges.get("frontRight")).points[1], Objects.requireNonNull(edges.get("frontLeft")).points[1]), Objects.requireNonNull(edges.get("frontLeft")).points[1]}, (byte) 16);
         CurrencyLine cl2 = new CurrencyLine(new Vector3f[]{Objects.requireNonNull(edges.get("frontRight")).points[2], FastMath.interpolateLinear(.33f, Objects.requireNonNull(edges.get("frontRight")).points[2], Objects.requireNonNull(edges.get("frontLeft")).points[2]),  FastMath.interpolateLinear(.66f, Objects.requireNonNull(edges.get("frontRight")).points[2], Objects.requireNonNull(edges.get("frontLeft")).points[2]), Objects.requireNonNull(edges.get("frontLeft")).points[2]}, (byte) 16);
         CurrencyLine cl3 = edges.get("frontTop");
-        Layer layer= new Layer((short) 128, (short) 128);
-        layer.drawCircle((short) 63, (short) 63, (short) 128, ColorRGBA.fromRGBA255(255,215,175,255));
-
-        //DRAW FEACHURES
-        //layer.drawCircle((short) 25, (short) 25, (short) 4, ColorRGBA.fromRGBA255(255,225,185,255));
-
-        //DRILL COLOR CODE
-        //layer.drawCircle((short) 63, (short) 63, (short) 128, ColorRGBA.fromRGBA255(0,0,255,255));
-
-        ATMS atms = new ATMS((byte) 1, layer);
-        //atmsFront.frames[0] = layerFront;
-        ByteBuffer data = BufferUtils.createByteBuffer(atms.frames[0].outputLayer());
-        // ByteBuffer data = BufferUtils.createByteBuffer((byte)0,(byte)127,(byte)0,(byte)62);
-        Image image = new Image(Image.Format.RGBA8, 128, 128, data, ColorSpace.Linear);
-        Texture2D texture2D = new Texture2D(image);
-        sides.put("front", new CurrencyMesh(app, new CurrencyLine[]{cl, cl1, cl2, cl3}, texture2D, node));
+//        Layer layer= new Layer((short) 128, (short) 128);
+//        layer.drawCircle((short) 63, (short) 63, (short) 128, ColorRGBA.fromRGBA255(255,215,175,255));
+//
+//        //DRAW FEACHURES
+//        //layer.drawCircle((short) 25, (short) 25, (short) 4, ColorRGBA.fromRGBA255(255,225,185,255));
+//
+//        //DRILL COLOR CODE
+//        //layer.drawCircle((short) 63, (short) 63, (short) 128, ColorRGBA.fromRGBA255(0,0,255,255));
+//
+//        ATMS atms = new ATMS((byte) 1, layer);
+//        //atmsFront.frames[0] = layerFront;
+//        ByteBuffer data = BufferUtils.createByteBuffer(atms.frames[0].outputLayer());
+//        // ByteBuffer data = BufferUtils.createByteBuffer((byte)0,(byte)127,(byte)0,(byte)62);
+//        Image image = new Image(Image.Format.RGBA8, 128, 128, data, ColorSpace.Linear);
+//        Texture2D texture2D = new Texture2D(image);
+        sides.put("front", new CurrencyMesh(app, new CurrencyLine[]{cl, cl1, cl2, cl3}, makeTexture("front"), node));
 
     }
 
@@ -153,19 +153,19 @@ public class SuperCube {
         CurrencyLine cl2 = new CurrencyLine(new Vector3f[]{Objects.requireNonNull(edges.get("backRight")).points[2], FastMath.interpolateLinear(.33f, Objects.requireNonNull(edges.get("backRight")).points[2], Objects.requireNonNull(edges.get("backLeft")).points[2]),  FastMath.interpolateLinear(.66f, Objects.requireNonNull(edges.get("backRight")).points[2], Objects.requireNonNull(edges.get("backRight")).points[2]), Objects.requireNonNull(edges.get("backLeft")).points[2]}, (byte) 16);
         CurrencyLine cl3 = edges.get("backTop");
 
-        Layer layer = new Layer((short) 128, (short) 128);
-        layer.drawCircle((short) 63, (short) 63, (short) 128, ColorRGBA.fromRGBA255(255,215,175,255));
-
-        //DRILL COLOR CODE
-        // layer.drawCircle((short) 63, (short) 63, (short) 128, ColorRGBA.fromRGBA255(0,0,255,255));
-
-        ATMS atms = new ATMS((byte) 1, layer);
-        //atmsFront.frames[0] = layerFront;
-        ByteBuffer data = BufferUtils.createByteBuffer(atms.frames[0].outputLayer());
-        // ByteBuffer data = BufferUtils.createByteBuffer((byte)0,(byte)127,(byte)0,(byte)62);
-        Image image = new Image(Image.Format.RGBA8, 128, 128, data, ColorSpace.Linear);
-        Texture2D texture2D = new Texture2D(image);
-        sides.put("back", new CurrencyMesh(app, new CurrencyLine[]{cl, cl1, cl2, cl3}, texture2D, node));
+//        Layer layer = new Layer((short) 128, (short) 128);
+//        layer.drawCircle((short) 63, (short) 63, (short) 128, ColorRGBA.fromRGBA255(255,215,175,255));
+//
+//        //DRILL COLOR CODE
+//        // layer.drawCircle((short) 63, (short) 63, (short) 128, ColorRGBA.fromRGBA255(0,0,255,255));
+//
+//        ATMS atms = new ATMS((byte) 1, layer);
+//        //atmsFront.frames[0] = layerFront;
+//        ByteBuffer data = BufferUtils.createByteBuffer(atms.frames[0].outputLayer());
+//        // ByteBuffer data = BufferUtils.createByteBuffer((byte)0,(byte)127,(byte)0,(byte)62);
+//        Image image = new Image(Image.Format.RGBA8, 128, 128, data, ColorSpace.Linear);
+//        Texture2D texture2D = new Texture2D(image);
+        sides.put("back", new CurrencyMesh(app, new CurrencyLine[]{cl, cl1, cl2, cl3}, makeTexture("back"), node));
 
     }
 
@@ -176,16 +176,16 @@ public class SuperCube {
         CurrencyLine cl2 = new CurrencyLine(new Vector3f[]{Objects.requireNonNull(edges.get("backRight")).points[2], FastMath.interpolateLinear(.33f, Objects.requireNonNull(edges.get("backRight")).points[2], Objects.requireNonNull(edges.get("frontRight")).points[2]),  FastMath.interpolateLinear(.66f, Objects.requireNonNull(edges.get("backRight")).points[2], Objects.requireNonNull(edges.get("frontRight")).points[2]), Objects.requireNonNull(edges.get("frontRight")).points[2]}, (byte) 16);
         CurrencyLine cl3 = edges.get("topRight");
 
-        Layer layer= new Layer((short) 128, (short) 128);
-        layer.drawCircle((short) 63, (short) 63, (short) 128, ColorRGBA.fromRGBA255(255,215,175,255));
-
-        ATMS atms = new ATMS((byte) 1, layer);
-        //atmsFront.frames[0] = layerFront;
-        ByteBuffer data = BufferUtils.createByteBuffer(atms.frames[0].outputLayer());
-        // ByteBuffer data = BufferUtils.createByteBuffer((byte)0,(byte)127,(byte)0,(byte)62);
-        Image image = new Image(Image.Format.RGBA8, 128, 128, data, ColorSpace.Linear);
-        Texture2D texture2D = new Texture2D(image);
-        sides.put("right", new CurrencyMesh(app, new CurrencyLine[]{cl, cl1, cl2, cl3}, texture2D, node));
+//        Layer layer= new Layer((short) 128, (short) 128);
+//        layer.drawCircle((short) 63, (short) 63, (short) 128, ColorRGBA.fromRGBA255(255,215,175,255));
+//
+//        ATMS atms = new ATMS((byte) 1, layer);
+//        //atmsFront.frames[0] = layerFront;
+//        ByteBuffer data = BufferUtils.createByteBuffer(atms.frames[0].outputLayer());
+//        // ByteBuffer data = BufferUtils.createByteBuffer((byte)0,(byte)127,(byte)0,(byte)62);
+//        Image image = new Image(Image.Format.RGBA8, 128, 128, data, ColorSpace.Linear);
+//        Texture2D texture2D = new Texture2D(image);
+        sides.put("right", new CurrencyMesh(app, new CurrencyLine[]{cl, cl1, cl2, cl3}, makeTexture("right"), node));
     }
 
     public void addLeft(){
@@ -196,18 +196,18 @@ public class SuperCube {
         CurrencyLine cl2 = new CurrencyLine(new Vector3f[]{Objects.requireNonNull(edges.get("backLeft")).points[2], FastMath.interpolateLinear(.33f, Objects.requireNonNull(edges.get("backLeft")).points[2], Objects.requireNonNull(edges.get("frontLeft")).points[2]),  FastMath.interpolateLinear(.66f, Objects.requireNonNull(edges.get("backLeft")).points[2], Objects.requireNonNull(edges.get("frontLeft")).points[2]), Objects.requireNonNull(edges.get("frontLeft")).points[2]}, (byte) 16);
         CurrencyLine cl3 = edges.get("topLeft");
 
-        Layer layer= new Layer((short) 128, (short) 128);
-        layer.drawCircle((short) 63, (short) 63, (short) 128, ColorRGBA.fromRGBA255(255,215,175,255));
-
-        //layer.drawCircle((short) 63, (short) 63, (short) 128, ColorRGBA.fromRGBA255(0,0,255,255));
-
-        ATMS atms = new ATMS((byte) 1, layer);
-        //atmsFront.frames[0] = layerFront;
-        ByteBuffer data = BufferUtils.createByteBuffer(atms.frames[0].outputLayer());
-        // ByteBuffer data = BufferUtils.createByteBuffer((byte)0,(byte)127,(byte)0,(byte)62);
-        Image image = new Image(Image.Format.RGBA8, 128, 128, data, ColorSpace.Linear);
-        Texture2D texture2D = new Texture2D(image);
-        sides.put("left", new CurrencyMesh(app, new CurrencyLine[]{cl, cl1, cl2, cl3}, texture2D, node));
+//        Layer layer= new Layer((short) 128, (short) 128);
+//        layer.drawCircle((short) 63, (short) 63, (short) 128, ColorRGBA.fromRGBA255(255,215,175,255));
+//
+//        //layer.drawCircle((short) 63, (short) 63, (short) 128, ColorRGBA.fromRGBA255(0,0,255,255));
+//
+//        ATMS atms = new ATMS((byte) 1, layer);
+//        //atmsFront.frames[0] = layerFront;
+//        ByteBuffer data = BufferUtils.createByteBuffer(atms.frames[0].outputLayer());
+//        // ByteBuffer data = BufferUtils.createByteBuffer((byte)0,(byte)127,(byte)0,(byte)62);
+//        Image image = new Image(Image.Format.RGBA8, 128, 128, data, ColorSpace.Linear);
+//        Texture2D texture2D = new Texture2D(image);
+        sides.put("left", new CurrencyMesh(app, new CurrencyLine[]{cl, cl1, cl2, cl3}, makeTexture("left"), node));
     }
 
     public void addTop(){
@@ -217,16 +217,16 @@ public class SuperCube {
         CurrencyLine cl2 = new CurrencyLine(new Vector3f[]{Objects.requireNonNull(edges.get("topRight")).points[1], FastMath.interpolateLinear(.33f, Objects.requireNonNull(edges.get("topRight")).points[1], Objects.requireNonNull(edges.get("topLeft")).points[1]),  FastMath.interpolateLinear(.66f, Objects.requireNonNull(edges.get("topRight")).points[1], Objects.requireNonNull(edges.get("topLeft")).points[1]), Objects.requireNonNull(edges.get("topLeft")).points[1]}, (byte) 16);
         CurrencyLine cl3 = edges.get("backTop");
 
-        Layer layer= new Layer((short) 128, (short) 128);
-        layer.drawCircle((short) 63, (short) 63, (short) 128, ColorRGBA.fromRGBA255(255,215,175,255));
-
-        ATMS atms = new ATMS((byte) 1, layer);
-        //atmsFront.frames[0] = layerFront;
-        ByteBuffer data = BufferUtils.createByteBuffer(atms.frames[0].outputLayer());
-        // ByteBuffer data = BufferUtils.createByteBuffer((byte)0,(byte)127,(byte)0,(byte)62);
-        Image image = new Image(Image.Format.RGBA8, 128, 128, data, ColorSpace.Linear);
-        Texture2D texture2D = new Texture2D(image);
-        sides.put("top", new CurrencyMesh(app, new CurrencyLine[]{cl, cl1, cl2, cl3}, texture2D, node));
+//        Layer layer= new Layer((short) 128, (short) 128);
+//        layer.drawCircle((short) 63, (short) 63, (short) 128, ColorRGBA.fromRGBA255(255,215,175,255));
+//
+//        ATMS atms = new ATMS((byte) 1, layer);
+//        //atmsFront.frames[0] = layerFront;
+//        ByteBuffer data = BufferUtils.createByteBuffer(atms.frames[0].outputLayer());
+//        // ByteBuffer data = BufferUtils.createByteBuffer((byte)0,(byte)127,(byte)0,(byte)62);
+//        Image image = new Image(Image.Format.RGBA8, 128, 128, data, ColorSpace.Linear);
+//        Texture2D texture2D = new Texture2D(image);
+        sides.put("top", new CurrencyMesh(app, new CurrencyLine[]{cl, cl1, cl2, cl3}, makeTexture("top"), node));
 
     }
 
@@ -237,19 +237,19 @@ public class SuperCube {
         CurrencyLine cl2 = new CurrencyLine(new Vector3f[]{Objects.requireNonNull(edges.get("bottomRight")).points[2], FastMath.interpolateLinear(.33f, Objects.requireNonNull(edges.get("bottomRight")).points[2], Objects.requireNonNull(edges.get("bottomLeft")).points[2]),  FastMath.interpolateLinear(.66f, Objects.requireNonNull(edges.get("bottomRight")).points[2], Objects.requireNonNull(edges.get("bottomLeft")).points[2]), Objects.requireNonNull(edges.get("bottomLeft")).points[2]}, (byte) 16);
         CurrencyLine cl3 = edges.get("frontBottom");
 
-        Layer layer= new Layer((short) 128, (short) 128);
-        layer.drawCircle((short) 63, (short) 63, (short) 128, ColorRGBA.fromRGBA255(255,215,175,255));
-
-        //DRILL COLOR CODE
-        // layer.drawCircle((short) 63, (short) 63, (short) 128, ColorRGBA.fromRGBA255(0,0,0,255));
-
-        ATMS atms = new ATMS((byte) 1, layer);
-        //atmsFront.frames[0] = layerFront;
-        ByteBuffer data = BufferUtils.createByteBuffer(atms.frames[0].outputLayer());
-        // ByteBuffer data = BufferUtils.createByteBuffer((byte)0,(byte)127,(byte)0,(byte)62);
-        Image image = new Image(Image.Format.RGBA8, 128, 128, data, ColorSpace.Linear);
-        Texture2D texture2D = new Texture2D(image);
-        sides.put("bottom", new CurrencyMesh(app, new CurrencyLine[]{cl, cl1, cl2, cl3}, texture2D, node));
+//        Layer layer= new Layer((short) 128, (short) 128);
+//        layer.drawCircle((short) 63, (short) 63, (short) 128, ColorRGBA.fromRGBA255(255,215,175,255));
+//
+//        //DRILL COLOR CODE
+//        // layer.drawCircle((short) 63, (short) 63, (short) 128, ColorRGBA.fromRGBA255(0,0,0,255));
+//
+//        ATMS atms = new ATMS((byte) 1, layer);
+//        //atmsFront.frames[0] = layerFront;
+//        ByteBuffer data = BufferUtils.createByteBuffer(atms.frames[0].outputLayer());
+//        // ByteBuffer data = BufferUtils.createByteBuffer((byte)0,(byte)127,(byte)0,(byte)62);
+//        Image image = new Image(Image.Format.RGBA8, 128, 128, data, ColorSpace.Linear);
+//        Texture2D texture2D = new Texture2D(image);
+        sides.put("bottom", new CurrencyMesh(app, new CurrencyLine[]{cl, cl1, cl2, cl3}, makeTexture("bottom"), node));
 
     }
 
@@ -282,5 +282,21 @@ public class SuperCube {
     public void makeExports(){
 
     }
+
+    public Texture2D makeTexture(String side){
+        Layer layer= new Layer((short) 128, (short) 128);
+        layer.drawCircle((short) 63, (short) 63, (short) 128, ColorRGBA.fromRGBA255(255,215,175,255));
+
+        //DRILL COLOR CODE
+        // layer.drawCircle((short) 63, (short) 63, (short) 128, ColorRGBA.fromRGBA255(0,0,0,255));
+
+        ATMS atms = new ATMS((byte) 1, layer);
+        //atmsFront.frames[0] = layerFront;
+        ByteBuffer data = BufferUtils.createByteBuffer(atms.frames[0].outputLayer());
+        // ByteBuffer data = BufferUtils.createByteBuffer((byte)0,(byte)127,(byte)0,(byte)62);
+        Image image = new Image(Image.Format.RGBA8, 128, 128, data, ColorSpace.Linear);
+        return new Texture2D(image);
+    }
+
 
 }
