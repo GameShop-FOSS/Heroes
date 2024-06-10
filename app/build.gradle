@@ -10,8 +10,9 @@ android {
         applicationId "com.gameshopcorp.heroes"
         minSdk 19
         targetSdk 34
-        versionCode 1
-        versionName "1.0"
+        versionCode 3
+        versionName "3.0"
+        multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -34,6 +35,9 @@ dependencies {
     implementation libs.material
     implementation libs.activity
     implementation libs.constraintlayout
+
+    //multidex
+    //implementation libs.multidex
 
     /*add the JMonkeyEngine Dependencies*/
     implementation libs.jme3.core

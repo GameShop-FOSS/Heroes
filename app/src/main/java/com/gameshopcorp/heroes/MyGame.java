@@ -80,6 +80,7 @@ public final class MyGame extends SimpleApplication {
             GeometryBatchFactory.optimize(getRootNode());
        // }
         //Publishing To Google Play Store
+        //com.google.android.gms.permission.AD_ID
         //SuperCube superCube = new SuperCube(this, new Vector3f(), getRootNode(), null, new String[]{"all"});
         getViewPort().setBackgroundColor(ColorRGBA.Black);
 
