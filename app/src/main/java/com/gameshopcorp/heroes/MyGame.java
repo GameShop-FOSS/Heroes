@@ -79,6 +79,7 @@ public final class MyGame extends SimpleApplication {
             Rune rune = new Rune(this);
             GeometryBatchFactory.optimize(getRootNode());
        // }
+        //Publishing To Google Play Store
         //SuperCube superCube = new SuperCube(this, new Vector3f(), getRootNode(), null, new String[]{"all"});
         getViewPort().setBackgroundColor(ColorRGBA.Black);
 
