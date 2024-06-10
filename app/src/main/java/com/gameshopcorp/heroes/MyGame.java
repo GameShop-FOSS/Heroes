@@ -75,10 +75,13 @@ public final class MyGame extends SimpleApplication {
     @Override
     public void simpleInitApp() {
         flyCam.setEnabled(true);
-        Rune rune = new Rune(this);
+        //for (int i = 0; i < 2; i++) {
+            Rune rune = new Rune(this);
+            GeometryBatchFactory.optimize(getRootNode());
+       // }
         //SuperCube superCube = new SuperCube(this, new Vector3f(), getRootNode(), null, new String[]{"all"});
         getViewPort().setBackgroundColor(ColorRGBA.Black);
-        GeometryBatchFactory.optimize(getRootNode());
+
     }
 
 }
