@@ -1,6 +1,6 @@
 # Heroes
 
-## *Created By Lynden Jay Evans*
+## Author: Lynden Jay Evans
 
 ## An action adventure epic coming to Google Play Early Access in July 2024
 
