@@ -76,8 +76,17 @@ public final class MyGame extends SimpleApplication {
     public void simpleInitApp() {
         flyCam.setEnabled(true);
         //for (int i = 0; i < 2; i++) {
-       // SuperCube superCube = new SuperCube(this, new Vector3f(), getRootNode(), null, new String[]{"front"});
-        //superCube.modCurrencyLine("front", (byte) 0, (byte) 0,new Vector3f(-4,0,0));
+        //Front:0
+
+//    SuperCube superCube = new SuperCube(this, new Vector3f(), getRootNode(), null, new String[]{"front"}){
+//            @Override
+//            public void make() {
+//                super.make();
+//                modCurrencyLine("front", (byte) 0, (byte) 0,new Vector3f(-4,0,0));
+//
+//            }
+//        };
+//        superCube.make();
 
          Rune rune = new Rune(this);
          GeometryBatchFactory.optimize(getRootNode());

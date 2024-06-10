@@ -21,7 +21,7 @@ import java.util.Objects;
 
 public class SuperCube {
 
-    HashMap<String, CurrencyMesh> sides;
+    public HashMap<String, CurrencyMesh> sides;
     SimpleApplication app;
 
     HashMap<String, CurrencyLine> edges;
@@ -130,7 +130,7 @@ public class SuperCube {
         layer.drawCircle((short) 63, (short) 63, (short) 128, ColorRGBA.fromRGBA255(255,215,175,255));
 
         //DRAW FEACHURES
-        layer.drawCircle((short) 25, (short) 25, (short) 4, ColorRGBA.fromRGBA255(255,225,185,255));
+        //layer.drawCircle((short) 25, (short) 25, (short) 4, ColorRGBA.fromRGBA255(255,225,185,255));
 
         //DRILL COLOR CODE
         //layer.drawCircle((short) 63, (short) 63, (short) 128, ColorRGBA.fromRGBA255(0,0,255,255));
@@ -257,10 +257,11 @@ public class SuperCube {
 
         for(CurrencyMesh cm: sides.values()){
             int cli = 0;
+
             for (CurrencyLine cl: cm.currencyLines){
                 int p = 0;
                 for (Vector3f v: cl.points){
-                    if (v.equals(Objects.requireNonNull(sides.get(side)).currencyLines[cli].points[point])){
+                    if (v.equals(Objects.requireNonNull(sides.get(side)).currencyLines[line].points[point])){
                         //store.add(v);
                          cm.modCurrencyLine((byte) cli, (byte) p, newPoint);
                     }
@@ -269,11 +270,16 @@ public class SuperCube {
                 cli++;
             }
         }
-        Objects.requireNonNull(sides.get(side)).modCurrencyLine(line, point, newPoint);
+       // Objects.requireNonNull(sides.get(side)).modCurrencyLine(line, point, newPoint);
 
     }
 
-    public void refresh(){
+    //This is to make the shape
+    public void make(){
+
+    }
+
+    public void makeExports(){
 
     }
 
