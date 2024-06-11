@@ -127,31 +127,6 @@ public class Head extends SuperCube {
 
     }
 
-//
-//    public void addBottom(){
-//        Vector3f[] mid = new Vector3f[]{axis.add(new Vector3f(1,-1,-2)), axis.add(new Vector3f(2,-1,-2)),axis.add(new Vector3f(1,-2,-1)),axis.add(new Vector3f(2,-2,-1))};
-//        CurrencyLine cl = backBottom;
-//        CurrencyLine cl1 = new CurrencyLine(new Vector3f[]{bottomRight.points[1], mid[0], mid[1],  bottomLeft.points[1]}, (byte) 16);
-//        CurrencyLine cl2 = new CurrencyLine(new Vector3f[]{bottomRight.points[2], mid[2], mid[3] , bottomLeft.points[2]}, (byte) 16);
-//        CurrencyLine cl3 = frontBottom;
-//
-//        Layer layer= new Layer((short) 128, (short) 128);
-//        layer.drawCircle((short) 63, (short) 63, (short) 128, ColorRGBA.fromRGBA255(255,215,175,255));
-//
-//        //DRILL COLOR CODE
-//       // layer.drawCircle((short) 63, (short) 63, (short) 128, ColorRGBA.fromRGBA255(0,0,0,255));
-//
-//        ATMS atms = new ATMS((byte) 1, layer);
-//        //atmsFront.frames[0] = layerFront;
-//        ByteBuffer data = BufferUtils.createByteBuffer(atms.frames[0].outputLayer());
-//        // ByteBuffer data = BufferUtils.createByteBuffer((byte)0,(byte)127,(byte)0,(byte)62);
-//        Image image = new Image(Image.Format.RGBA8, 128, 128, data, ColorSpace.Linear);
-//        Texture2D texture2D = new Texture2D(image);
-//        bottom = new CurrencyMesh(app, new CurrencyLine[]{cl, cl1, cl2, cl3}, texture2D, node);
-//
-//
-//    }
-
     @Override
     public void makeExports(){
 
@@ -179,5 +154,16 @@ public class Head extends SuperCube {
                     new Vector3f(Objects.requireNonNull(sides.get("bottom")).getMeshFromValue(12, 0).vertices[0])
             });
         }
+        if (Arrays.asList(renderSides).contains("all") || Arrays.asList(renderSides).contains("front")){
+
+            exports.put("Nose", new Vector3f[]{
+                new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(6, 2).vertices[0]),
+                        new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(6, 6).vertices[0]),
+                        new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(10, 6).vertices[0]),
+                        new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(10, 2).vertices[0])
+            });
+        }
+
+
     }
 }

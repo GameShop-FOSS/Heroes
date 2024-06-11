@@ -10,6 +10,7 @@ import com.jme3.scene.Node;
 
 import java.util.AbstractCollection;
 import java.util.HashMap;
+import java.util.Objects;
 
 public class Rune {
 
@@ -30,10 +31,26 @@ public class Rune {
     Head head = new Head(app, new Vector3f(), headNode, corners, new String[]{"all"});
 
         Node noseNode = new Node("Nose");
-        Nose nose = new Nose(app, new Vector3f(), noseNode);
-        noseNode.scale(.25f);
-        noseNode.scale(1,2,1);
-        noseNode.move(new Vector3f(1.1f, 0f,1.25f));
+        HashMap<String, Vector3f> corners1 = new HashMap<>();
+        corners1.put("frontBottomLeft", (Objects.requireNonNull(head.exports.get("Nose"))[3]).add(0,0, 1));
+        corners1.put("frontTopLeft", (Objects.requireNonNull(head.exports.get("Nose"))[2]).add(-.125f,-.25f, .5f));
+        corners1.put("frontTopRight", (Objects.requireNonNull(head.exports.get("Nose"))[1]).add(.125f,-.25f,.5f));
+        corners1.put("frontBottomRight", (Objects.requireNonNull(head.exports.get("Nose"))[0]).add(0,0,1));
+        corners1.put("backBottomLeft", (Objects.requireNonNull(head.exports.get("Nose"))[3]));
+        corners1.put("backTopLeft", (Objects.requireNonNull(head.exports.get("Nose"))[2]));
+        corners1.put("backTopRight", (Objects.requireNonNull(head.exports.get("Nose"))[1]));
+        corners1.put("backBottomRight", (Objects.requireNonNull(head.exports.get("Nose"))[0]));
+//        Vector3f[] corners = new Vector3f[]{
+//                //Front:0
+//                axis.add(new Vector3f(.5f, -0, -.5f)), axis.add(new Vector3f(1.25f, 3f, -2f)), axis.add(new Vector3f(1.75f, 3, -2f)), axis.add(new Vector3f(2.5f, -0, -.5f)),
+//                //Back:4
+//                axis.add(new Vector3f(0, 0, -3)), axis.add(new Vector3f(1.25f, 3, -3)), axis.add(new Vector3f(1.75f, 3, -3)), axis.add(new Vector3f(3, 0, -3))};
+
+        Nose nose = new Nose(app, new Vector3f(), noseNode, corners1, new String[]{"all"});// CHANGE BEFORE RUNNING
+
+        //noseNode.scale(.25f);
+        //noseNode.scale(1,2,1);
+        //noseNode.move(new Vector3f(1.1f, 0f,1.25f));
         headNode.attachChild(noseNode);
 
 //        Node hairTopNode = new Node("HairTop");
