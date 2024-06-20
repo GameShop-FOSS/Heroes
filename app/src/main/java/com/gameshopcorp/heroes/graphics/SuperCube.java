@@ -193,7 +193,7 @@ public class SuperCube {
 
     public void modCurrencyLine(String side,byte line, byte point, Vector3f newPoint){
 
-        System.out.println(" Type: " + this.getClass().getName().toString() + "Side: " + side +  " Old Point: " + sides.get(side).currencyLines[line].points[point] + " New Point: " + newPoint);
+        System.out.println(" Type: " + this.getClass().getSimpleName() + " Side: " + side +  " Old Point: " + sides.get(side).currencyLines[line].points[point] + " New Point: " + newPoint);
 
         for(CurrencyMesh cm: sides.values()){
             int cli = 0;

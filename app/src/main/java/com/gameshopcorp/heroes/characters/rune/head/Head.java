@@ -32,47 +32,62 @@ public class Head extends SuperCube {
     public void make() {
 
         if (Arrays.asList(renderSides).contains("all") || Arrays.asList(renderSides).contains("front")) {
-           // modCurrencyLine("front", (byte) 0, (byte) 1, new Vector3f(1, -2, 0));
-           // modCurrencyLine("front", (byte) 0, (byte) 2, new Vector3f(2, -2, 0));
+            modCurrencyLine("front", (byte) 0, (byte) 1, new Vector3f(1, -2, 0));
+            modCurrencyLine("front", (byte) 0, (byte) 2, new Vector3f(2, -2, 0));
 
-            addCurrencyLine("front", (byte) 0, (byte) 1, new Vector3f(-.1600001f, -1,0));
-            addCurrencyLine("front", (byte) 0, (byte) 2, new Vector3f(.18f, -1,0));
+//            addCurrencyLine("front", (byte) 0, (byte) 1, new Vector3f(-.1600001f, -1,0));
+//            addCurrencyLine("front", (byte) 0, (byte) 2, new Vector3f(.18f, -1,0));
 
-//            modCurrencyLine("front", (byte) 3, (byte) 1, new Vector3f(1, 3.5f, 0));
-//            modCurrencyLine("front", (byte) 3, (byte) 2, new Vector3f(2, 3.5f, 0));
+            modCurrencyLine("front", (byte) 3, (byte) 1, new Vector3f(1, 3.5f, 0));
+            modCurrencyLine("front", (byte) 3, (byte) 2, new Vector3f(2, 3.5f, 0));
 
-            addCurrencyLine("front", (byte) 3, (byte) 1, new Vector3f(-.2449999f, .5f,0));
-            addCurrencyLine("front", (byte) 3, (byte) 2, new Vector3f(.26f, .5f,0));
+//            addCurrencyLine("front", (byte) 3, (byte) 1, new Vector3f(-.2449999f, .5f,0));
+//            addCurrencyLine("front", (byte) 3, (byte) 2, new Vector3f(.26f, .5f,0));
 
+
+            modCurrencyLine("front", (byte) 1, (byte) 1, new Vector3f(1, 1, 2));
+            modCurrencyLine("front", (byte) 1, (byte) 2, new Vector3f(2, 1f, 2));
+            modCurrencyLine("front", (byte) 2, (byte) 1, new Vector3f(1, 2, 2));
+            modCurrencyLine("front", (byte) 2, (byte) 2, new Vector3f(2, 2f, 2));
 
             //frontmid
-//            modCurrencyLine("front", (byte) 1, (byte) 1, new Vector3f(1, 1, 2));
-//            modCurrencyLine("front", (byte) 1, (byte) 2, new Vector3f(2, 1f, 2));
-//            modCurrencyLine("front", (byte) 2, (byte) 1, new Vector3f(1, 2, 2));
 //            modCurrencyLine("front", (byte) 2, (byte) 2, new Vector3f(2, 2f, 2));
 
-            addCurrencyLine("front", (byte) 1, (byte) 1, new Vector3f(-.18805f, (.68f - .000000005f), 2));
-            addCurrencyLine("front", (byte) 1, (byte) 2, new Vector3f((.21f - .0036001f), (.68f - .000000005f), 2));
-            addCurrencyLine("front", (byte) 2, (byte) 1, new Vector3f(-.2161f, (.36f - 0000001f), 2));
-            addCurrencyLine("front", (byte) 2, (byte) 2, new Vector3f((.24f - .0072001f), (.36f - 0000001f), 2));
+//            addCurrencyLine("front", (byte) 1, (byte) 1, new Vector3f(-.18805f, (.68f - .000000005f), 2));
+//            addCurrencyLine("front", (byte) 1, (byte) 2, new Vector3f((.21f - .0036001f), (.68f - .000000005f), 2));
+//            addCurrencyLine("front", (byte) 2, (byte) 1, new Vector3f(-.2161f, (.36f - 0000001f), 2));
+//            addCurrencyLine("front", (byte) 2, (byte) 2, new Vector3f((.24f - .0072001f), (.36f - 0000001f), 2));
 
 
         }
 
         if (Arrays.asList(renderSides).contains("all") || Arrays.asList(renderSides).contains("back")) {
             //right
+
             modCurrencyLine("back", (byte) 1, (byte) 0, new Vector3f(0, 1.5f, -4));
             modCurrencyLine("back", (byte) 2, (byte) 0, new Vector3f(0, 2.5f, -4));
+
+//            addCurrencyLine("back", (byte) 1, (byte) 0, new Vector3f(-.75f, -.11f, -1));
+//            addCurrencyLine("back", (byte) 2, (byte) 0, new Vector3f(-.75f, .18f, -1));
 
             //left
             modCurrencyLine("back", (byte) 1, (byte) 3, new Vector3f(3, 1.5f, -4));
             modCurrencyLine("back", (byte) 2, (byte) 3, new Vector3f(3, 2.5f, -4));
+
+//            addCurrencyLine("back", (byte) 1, (byte) 3, new Vector3f(.75f, -.16f, -1));
+//            addCurrencyLine("back", (byte) 2, (byte) 3, new Vector3f(.75f, .18f, -1));
 
             //backmid
             modCurrencyLine("back", (byte) 1, (byte) 1, new Vector3f(2, 1.5f, -3.5f));
             modCurrencyLine("back", (byte) 1, (byte) 2, new Vector3f(1, 1.5f, -3.5f));
             modCurrencyLine("back", (byte) 2, (byte) 1, new Vector3f(2, 2.5f, -3.5f));
             modCurrencyLine("back", (byte) 2, (byte) 2, new Vector3f(1, 2.5f, -3.5f));
+
+//            addCurrencyLine("back", (byte) 1, (byte) 1, new Vector3f(.75f, -.16f, -.5f));
+//            addCurrencyLine("back", (byte) 1, (byte) 2, new Vector3f(-.74f, -.16f, -.5f));
+//            addCurrencyLine("back", (byte) 2, (byte) 1, new Vector3f(.75f, .18f, -.5f));
+//            addCurrencyLine("back", (byte) 2, (byte) 2, new Vector3f(.25f, .18f, -.5f));
+
         }
 
         if (Arrays.asList(renderSides).contains("all") || Arrays.asList(renderSides).contains("right")){
@@ -86,8 +101,8 @@ public class Head extends SuperCube {
             modCurrencyLine("right", (byte) 3, (byte) 2, new Vector3f(.75f, 4f, -1));
 
             //bottomright
-            modCurrencyLine("right", (byte) 0, (byte) 1, new Vector3f(0, -1f, -2));
-            modCurrencyLine("right", (byte) 0, (byte) 2, new Vector3f(0, -1f, -1));
+            modCurrencyLine("right", (byte) 0, (byte) 1, new Vector3f(0, -1f, -1));
+            modCurrencyLine("right", (byte) 0, (byte) 2, new Vector3f(0, -1f, -2));
         }
 
 
