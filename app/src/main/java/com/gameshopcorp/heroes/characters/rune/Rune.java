@@ -46,7 +46,7 @@ public class Rune {
 //                //Back:4
 //                axis.add(new Vector3f(0, 0, -3)), axis.add(new Vector3f(1.25f, 3, -3)), axis.add(new Vector3f(1.75f, 3, -3)), axis.add(new Vector3f(3, 0, -3))};
 
-        Nose nose = new Nose(app, new Vector3f(), noseNode, corners1, new String[]{"all"});// CHANGE BEFORE RUNNING
+        Nose nose = new Nose(app, new Vector3f(1.5f, 1.5f, -1.5f), noseNode, corners1, new String[]{"all"});// CHANGE BEFORE RUNNING
 
         //noseNode.scale(.25f);
         //noseNode.scale(1,2,1);
