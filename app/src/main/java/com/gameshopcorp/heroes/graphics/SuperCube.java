@@ -214,9 +214,12 @@ public class SuperCube {
 
     }
 
+    //To Be Completed
     public void updateUsingNormalsCurrencyLine(String side, byte line, byte point, Vector3f addNewPoint){
 
-        setCurrencyLine(side, line, point, Objects.requireNonNull(sides.get(side)).currencyLines[line].points[point].add(addNewPoint));
+        Vector3f normal = (Objects.requireNonNull(sides.get(side)).currencyLines[line].points[point]).mult((Objects.requireNonNull(sides.get(side)).currencyLines[line].points[point]).subtract(axis)) ;
+        System.out.println("Normal " + normal);
+        //setCurrencyLine(side, line, point, Objects.requireNonNull(sides.get(side)).currencyLines[line].points[point].add(addNewPoint));
 
 
     }
