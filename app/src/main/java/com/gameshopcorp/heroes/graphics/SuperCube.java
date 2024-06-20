@@ -1,8 +1,4 @@
 package com.gameshopcorp.heroes.graphics;
-import com.gameshopcorp.heroes.graphics.ATMS;
-import com.gameshopcorp.heroes.graphics.CurrencyLine;
-import com.gameshopcorp.heroes.graphics.CurrencyMesh;
-import com.gameshopcorp.heroes.graphics.Layer;
 import com.jme3.app.SimpleApplication;
 import com.jme3.math.ColorRGBA;
 import com.jme3.math.FastMath;
@@ -14,7 +10,6 @@ import com.jme3.texture.image.ColorSpace;
 import com.jme3.util.BufferUtils;
 
 import java.nio.ByteBuffer;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Objects;
@@ -35,7 +30,7 @@ public class SuperCube {
 
 
         this.app = app;
-        this.axis = axis.add(new Vector3f(axis));
+        this.axis = new Vector3f(axis);
         this.node = node;
         this.sides = new HashMap<>();
         this.exports = new HashMap<>();
@@ -47,9 +42,9 @@ public class SuperCube {
         if (imports == null){
             corners = new Vector3f[]{
                     //Front:0
-                    axis.add(new Vector3f(0,-0,0)),axis.add(new Vector3f(0,3f,0)), axis.add(new Vector3f(3,3,0)),axis.add(new Vector3f(3,-0,0)),
+                    new Vector3f(0,-0,0), new Vector3f(0,3f,0), new Vector3f(3,3,0), new Vector3f(3,-0,0),
                     //Back:4
-                    axis.add(new Vector3f(0,0,-3)), axis.add(new Vector3f(0,3,-3)),axis.add(new Vector3f(3,3,-3)), axis.add(new Vector3f(3,0,-3))};
+                    new Vector3f(0,0,-3), new Vector3f(0,3,-3), new Vector3f(3,3,-3), new Vector3f(3,0,-3)};
         } else {
             corners = new Vector3f[]{
                     //Front:0
@@ -191,7 +186,7 @@ public class SuperCube {
 
     }
 
-    public void modCurrencyLine(String side,byte line, byte point, Vector3f newPoint){
+    public void setCurrencyLine(String side, byte line, byte point, Vector3f newPoint){
 
         System.out.println(" Type: " + this.getClass().getSimpleName() + " Side: " + side +  " Old Point: " + sides.get(side).currencyLines[line].points[point] + " New Point: " + newPoint);
 
@@ -213,9 +208,15 @@ public class SuperCube {
 
     }
 
-    public void addCurrencyLine(String side, byte line, byte point, Vector3f addNewPoint){
+    public void updateCurrencyLine(String side, byte line, byte point, Vector3f addNewPoint){
 
-        modCurrencyLine(side, line, point, Objects.requireNonNull(sides.get(side)).currencyLines[line].points[point].add(addNewPoint));
+        setCurrencyLine(side, line, point, Objects.requireNonNull(sides.get(side)).currencyLines[line].points[point].add(addNewPoint));
+
+    }
+
+    public void updateUsingNormalsCurrencyLine(String side, byte line, byte point, Vector3f addNewPoint){
+
+
 
     }
 
