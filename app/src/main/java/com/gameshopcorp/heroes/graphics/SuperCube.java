@@ -216,6 +216,7 @@ public class SuperCube {
 
     public void updateUsingNormalsCurrencyLine(String side, byte line, byte point, Vector3f addNewPoint){
 
+        setCurrencyLine(side, line, point, Objects.requireNonNull(sides.get(side)).currencyLines[line].points[point].add(addNewPoint));
 
 
     }
