@@ -289,7 +289,7 @@ public class SuperCube {
                     Vector3f input = (Objects.requireNonNull(sides.get(side)).currencyLines[line].points[point]);
                     if (v.equals(input)){
                         //store.add(v);
-                        groupCurrencyLines.add(new GroupCurrencyLine(value, (byte) cli, (byte) p));
+                       // groupCurrencyLines.add(new GroupCurrencyLine(value, (byte) cli, (byte) p));
 
                             }
                     p++;
