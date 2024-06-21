@@ -11,7 +11,7 @@ public class GroupCurrencyLine {
      */
     public GroupCurrencyLine(String side, byte line, byte point){
 
-        this.side = new String(side);
+        this.side = side;
         this.line = line;
         this.point = point;
     }
