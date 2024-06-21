@@ -41,6 +41,8 @@ public class SuperCube {
         this.renderSides = renderSides;
         this.edges = new HashMap<>();
 
+        this.groupCurrencyLines = new HashMap<>();
+
         Vector3f[] corners = new Vector3f[8];
 
         if (imports == null){
@@ -88,6 +90,15 @@ public class SuperCube {
             }
 
         }
+    }
+
+    /**
+     * Hi This Is Me
+     *
+     * -A Lady
+     */
+    public void addGroupCurrencyLines(){
+
     }
     public void addEdgeCurrencyLines(Vector3f[] corners){
 
