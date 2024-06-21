@@ -25,7 +25,7 @@ public class SuperCube {
     Node node;
 
 
-    public HashMap<String, ArrayList<GroupCurrencyLine>> groupCurrencyLines;
+    public HashMap<GroupCurrencyLine, GroupCurrencyLine[]> groupCurrencyLines;
 
     //public HashMap<String, Vector3f> imports;
     public HashMap<String, Vector3f[]> exports;
@@ -101,6 +101,13 @@ public class SuperCube {
      */
     public void addGroupCurrencyLines(){
 
+        groupCurrencyLines.put(new GroupCurrencyLine("front", (byte) 0, (byte) 0),new GroupCurrencyLine[]{
+
+                new GroupCurrencyLine("front", (byte) 0, (byte) 0),
+                new GroupCurrencyLine("bottom", (byte) 3, (byte) 0),
+                new GroupCurrencyLine("right", (byte) 0, (byte) 3),
+
+        });
 
     }
     public void addEdgeCurrencyLines(Vector3f[] corners){
