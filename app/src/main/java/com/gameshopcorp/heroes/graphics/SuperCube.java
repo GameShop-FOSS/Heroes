@@ -24,7 +24,7 @@ public class SuperCube {
     public Vector3f axis;
     Node node;
 
-    //This
+
     public HashMap<String, ArrayList<GroupCurrencyLine>> groupCurrencyLines;
 
     //public HashMap<String, Vector3f> imports;
@@ -90,6 +90,8 @@ public class SuperCube {
             }
 
         }
+
+        addGroupCurrencyLines();
     }
 
     /**
@@ -98,6 +100,7 @@ public class SuperCube {
      * -A Lady
      */
     public void addGroupCurrencyLines(){
+
 
     }
     public void addEdgeCurrencyLines(Vector3f[] corners){
