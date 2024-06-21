@@ -1,14 +1,12 @@
 package com.gameshopcorp.heroes.characters.rune;
 
 import com.gameshopcorp.heroes.characters.rune.head.Eye;
-import com.gameshopcorp.heroes.characters.rune.head.Hair;
 import com.gameshopcorp.heroes.characters.rune.head.Head;
 import com.gameshopcorp.heroes.characters.rune.head.Nose;
 import com.jme3.app.SimpleApplication;
 import com.jme3.math.Vector3f;
 import com.jme3.scene.Node;
 
-import java.util.AbstractCollection;
 import java.util.HashMap;
 import java.util.Objects;
 
@@ -28,7 +26,12 @@ public class Rune {
         corners.put("backTopRight", (new Vector3f(2.25f,3,-3)));
         corners.put("backBottomRight", (new Vector3f(2.25f,1,-3)));
 
-    Head head = new Head(app, new Vector3f(), headNode, corners, new String[]{"all"});
+        //Axis Should Be Average Of All The Corners
+    Head head = new Head(app, new Vector3f(1.5f, 1.5f, -1.5f), headNode, corners, new String[]{"all"});
+
+   // head.updateUsingNormalAngleCurrencyLine("front", (byte) 0, (byte) 0, new Vector3f(90,0f,0f), 10);
+//    head.updateUsingNormalAngleCurrencyLine("front", (byte) 1, (byte) 0, new Vector3f(0f,1f,0f));
+//    head.updateUsingNormalAngleCurrencyLine("front", (byte) 1, (byte) 0, new Vector3f(0f,1f,0f));
 
         Node noseNode = new Node("Nose");
         HashMap<String, Vector3f> corners1 = new HashMap<>();
@@ -46,7 +49,7 @@ public class Rune {
 //                //Back:4
 //                axis.add(new Vector3f(0, 0, -3)), axis.add(new Vector3f(1.25f, 3, -3)), axis.add(new Vector3f(1.75f, 3, -3)), axis.add(new Vector3f(3, 0, -3))};
 
-        Nose nose = new Nose(app, new Vector3f(1.5f, 1.5f, -1.5f), noseNode, corners1, new String[]{"all"});// CHANGE BEFORE RUNNING
+        Nose nose = new Nose(app, new Vector3f(), noseNode, corners1, new String[]{"all"});// CHANGE BEFORE RUNNING
 
         //noseNode.scale(.25f);
         //noseNode.scale(1,2,1);

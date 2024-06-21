@@ -23,6 +23,7 @@ public class SuperCube {
     public Vector3f axis;
     Node node;
 
+
     //public HashMap<String, Vector3f> imports;
     public HashMap<String, Vector3f[]> exports;
     public String[] renderSides;
@@ -113,6 +114,8 @@ public class SuperCube {
         edges.put("bottomRight", new CurrencyLine(new Vector3f[]{corners[4],FastMath.interpolateLinear(.33f, corners[4], corners[0]),FastMath.interpolateLinear(.66f, corners[4], corners[0]),corners[0] }, (byte)16));
 
     }
+
+
     public void addFront(){
 
         //Vector3f[] mid = new Vector3f[]{axis.add(new Vector3f(1,1,0f)), axis.add(new Vector3f(2,1,0f)), axis.add(new Vector3f(1,2,0f)), axis.add(new Vector3f(2,2,0f)),};
@@ -188,7 +191,7 @@ public class SuperCube {
 
     public void setCurrencyLine(String side, byte line, byte point, Vector3f newPoint){
 
-        System.out.println(" Type: " + this.getClass().getSimpleName() + " Side: " + side +  " Old Point: " + sides.get(side).currencyLines[line].points[point] + " New Point: " + newPoint);
+       // System.out.println(" Type: " + this.getClass().getSimpleName() + " Side: " + side +  " Old Point: " + sides.get(side).currencyLines[line].points[point] + " New Point: " + newPoint);
 
         for(CurrencyMesh cm: sides.values()){
             int cli = 0;
@@ -196,7 +199,8 @@ public class SuperCube {
             for (CurrencyLine cl: cm.currencyLines){
                 int p = 0;
                 for (Vector3f v: cl.points){
-                    if (v.equals(Objects.requireNonNull(sides.get(side)).currencyLines[line].points[point])){
+                    Vector3f input = (Objects.requireNonNull(sides.get(side)).currencyLines[line].points[point]);
+                    if (v.distance(input) < .1f){
                         //store.add(v);
                          cm.modCurrencyLine((byte) cli, (byte) p, newPoint);
                             }
@@ -215,10 +219,20 @@ public class SuperCube {
     }
 
     //To Be Completed
-    public void updateUsingNormalsCurrencyLine(String side, byte line, byte point, Vector3f addNewPoint){
+    public void updateUsingNormalAngleCurrencyLine(String side, byte line, byte point, Vector3f normalAngle, float distance){
 
-        Vector3f normal = (Objects.requireNonNull(sides.get(side)).currencyLines[line].points[point]).mult((Objects.requireNonNull(sides.get(side)).currencyLines[line].points[point]).subtract(axis)) ;
-        System.out.println("Normal " + normal);
+        setCurrencyLine(side, line, point, new Vector3f(FastMath.sin(normalAngle.x) * distance, FastMath.sin(normalAngle.y) * distance, FastMath.sin(normalAngle.z) * distance));
+       // FastMath.cos(1)
+//        Vector3f normalReference = (Objects.requireNonNull(sides.get(side)).currencyLines[line].points[point]) ;
+//
+//        Vector3f normalReferenceDistance = axis.subtract(normalReference);
+//        //Vector3f normalReferenceAngle = new Vector3f(normalReferenceDistance.x, normalReferenceDistance.y, normalReferenceDistance.z);//new Vector3f(FastMath.cos(axis.x), FastMath.asin(axis.y), -FastMath.acos(axis.z));//axis.angleBetween((Objects.requireNonNull(sides.get(side)).currencyLines[line].points[point]));
+//        Vector3f newPointDistance =   normalReference.subtract(addNewPoint);
+//        Vector3f product = newPointDistance.mult(normalReferenceDistance);
+//        //Vector3f altCrossProduct = new Vector3f(crossProduct);
+//        ///Vector3f altCrossProduct
+//        System.out.println( "Product: " + product + "Norm Ref: " + normalReference + " Norm Ref Dist: " + normalReferenceDistance + " New Point Dist: " + newPointDistance);
+//        setCurrencyLine(side, line, point, product);
         //setCurrencyLine(side, line, point, Objects.requireNonNull(sides.get(side)).currencyLines[line].points[point].add(addNewPoint));
 
 
