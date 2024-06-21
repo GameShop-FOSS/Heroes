@@ -27,9 +27,9 @@ public class Rune {
         corners.put("backBottomRight", (new Vector3f(2.25f,1,-3)));
 
         //Axis Should Be Average Of All The Corners
-    Head head = new Head(app, new Vector3f(1.5f, 1.5f, -1.5f), headNode, corners, new String[]{"all"});
+    Head head = new Head(app, new Vector3f(1.5f, 1.5f, -1.5f), headNode, corners, new String[]{"front"});
 
-   // head.updateUsingNormalAngleCurrencyLine("front", (byte) 0, (byte) 0, new Vector3f(90,0f,0f), 10);
+    //head.updateUsingNormalAngleCurrencyLine("front", (byte) 0, (byte) 0, new Vector3f(90,0f,0f), new Vector3f(1,1,1));
 //    head.updateUsingNormalAngleCurrencyLine("front", (byte) 1, (byte) 0, new Vector3f(0f,1f,0f));
 //    head.updateUsingNormalAngleCurrencyLine("front", (byte) 1, (byte) 0, new Vector3f(0f,1f,0f));
 
