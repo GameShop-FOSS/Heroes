@@ -25,7 +25,7 @@ public class SuperCube {
     Node node;
 
 
-    public HashMap<GroupCurrencyLine, GroupCurrencyLine[]> groupCurrencyLines;
+   // public ArrayList<GroupCurrencyLine[]> groupCurrencyLines;
 
     //public HashMap<String, Vector3f> imports;
     public HashMap<String, Vector3f[]> exports;
@@ -41,7 +41,7 @@ public class SuperCube {
         this.renderSides = renderSides;
         this.edges = new HashMap<>();
 
-        this.groupCurrencyLines = new HashMap<>();
+        //this.groupCurrencyLines = new ArrayList<>();
 
         Vector3f[] corners = new Vector3f[8];
 
@@ -91,25 +91,85 @@ public class SuperCube {
 
         }
 
-        addGroupCurrencyLines();
+        //addGroupCurrencyLines();
     }
 
-    /**
-     * Hi This Is Me
-     *
-     * -A Lady
-     */
-    public void addGroupCurrencyLines(){
-
-        groupCurrencyLines.put(new GroupCurrencyLine("front", (byte) 0, (byte) 0),new GroupCurrencyLine[]{
-
-                new GroupCurrencyLine("front", (byte) 0, (byte) 0),
-                new GroupCurrencyLine("bottom", (byte) 3, (byte) 0),
-                new GroupCurrencyLine("right", (byte) 0, (byte) 3),
-
-        });
-
-    }
+//    /**
+//     * Hi This Is Me
+//     *
+//     * -A Lady
+//     */
+//    public void addGroupCurrencyLines(){
+//
+//        groupCurrencyLines.add(new GroupCurrencyLine[]{
+//
+//                new GroupCurrencyLine("front", (byte) 0, (byte) 0),
+//                new GroupCurrencyLine("bottom", (byte) 3, (byte) 0),
+//                new GroupCurrencyLine("right", (byte) 0, (byte) 3),
+//
+//        });
+//
+//        groupCurrencyLines.add(new GroupCurrencyLine[]{
+//
+//                new GroupCurrencyLine("front", (byte) 3, (byte) 0),
+//                new GroupCurrencyLine("top", (byte) 0, (byte) 0),
+//                new GroupCurrencyLine("right", (byte) 3, (byte) 3),
+//
+//        });
+//
+//        groupCurrencyLines.add(new GroupCurrencyLine[]{
+//
+//                new GroupCurrencyLine("front", (byte) 0, (byte) 3),
+//                new GroupCurrencyLine("bottom", (byte) 3, (byte) 3),
+//                new GroupCurrencyLine("left", (byte) 0, (byte) 3),
+//
+//        });
+//
+//        groupCurrencyLines.add(new GroupCurrencyLine[]{
+//
+//                new GroupCurrencyLine("front", (byte) 3, (byte) 3),
+//                new GroupCurrencyLine("top", (byte) 0, (byte) 3),
+//                new GroupCurrencyLine("left", (byte) 3, (byte) 3),
+//
+//        });
+//
+//        //BACK
+//
+//        groupCurrencyLines.add(new GroupCurrencyLine[]{
+//
+//                new GroupCurrencyLine("back", (byte) 0, (byte) 0),
+//                new GroupCurrencyLine("bottom", (byte) 3, (byte) 0),
+//                new GroupCurrencyLine("right", (byte) 0, (byte) 3),
+//
+//        });
+//
+//        groupCurrencyLines.add(new GroupCurrencyLine[]{
+//
+//                new GroupCurrencyLine("back", (byte) 3, (byte) 0),
+//                new GroupCurrencyLine("top", (byte) 0, (byte) 0),
+//                new GroupCurrencyLine("right", (byte) 3, (byte) 3),
+//
+//        });
+//
+//        groupCurrencyLines.add(new GroupCurrencyLine[]{
+//
+//                new GroupCurrencyLine("back", (byte) 0, (byte) 3),
+//                new GroupCurrencyLine("bottom", (byte) 3, (byte) 3),
+//                new GroupCurrencyLine("left", (byte) 0, (byte) 3),
+//
+//        });
+//
+//        groupCurrencyLines.add(new GroupCurrencyLine[]{
+//
+//                new GroupCurrencyLine("back", (byte) 3, (byte) 3),
+//                new GroupCurrencyLine("top", (byte) 0, (byte) 3),
+//                new GroupCurrencyLine("left", (byte) 3, (byte) 3),
+//
+//        });
+//
+//
+//
+//    }
     public void addEdgeCurrencyLines(Vector3f[] corners){
 
         //Top Of Head
