@@ -277,7 +277,10 @@ public class SuperCube {
 
        // System.out.println(" Type: " + this.getClass().getSimpleName() + " Side: " + side +  " Old Point: " + sides.get(side).currencyLines[line].points[point] + " New Point: " + newPoint);
 
-        for(CurrencyMesh cm: sides.values()){
+        ArrayList<GroupCurrencyLine> groupCurrencyLines = new ArrayList<>();
+        for (String value: sides.keySet()){
+             CurrencyMesh cm = sides.get(value);
+
             int cli = 0;
 
             for (CurrencyLine cl: cm.currencyLines){
@@ -286,13 +289,21 @@ public class SuperCube {
                     Vector3f input = (Objects.requireNonNull(sides.get(side)).currencyLines[line].points[point]);
                     if (v.equals(input)){
                         //store.add(v);
-                         cm.modCurrencyLine((byte) cli, (byte) p, newPoint);
+                        groupCurrencyLines.add(new GroupCurrencyLine(value, (byte) cli, (byte) p));
+
                             }
                     p++;
                 }
                 cli++;
             }
         }
+
+        for (GroupCurrencyLine gcl : groupCurrencyLines){
+
+            setCurrencyLine(gcl.side, gcl.line, gcl.point, newPoint);
+
+        }
+
 
     }
 
