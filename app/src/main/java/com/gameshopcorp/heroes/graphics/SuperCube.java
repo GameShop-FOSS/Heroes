@@ -316,9 +316,9 @@ public class SuperCube {
     }
 
     //To Be Completed
-    public void updateUsingNormalAngleCurrencyLine(String side, byte line, byte point, Vector3f normalAngle, Vector3f distance){
+    public void updateUsingNormalAngleCurrencyLine(String side, byte line, byte point, Vector3f normalAngle, float distance){
 
-        setCurrencyLine(side, line, point, new Vector3f(FastMath.sin(normalAngle.x) * distance.x, FastMath.sin(normalAngle.y) * distance.y, FastMath.sin(normalAngle.z) * distance.z));
+        setCurrencyLine(side, line, point, new Vector3f(FastMath.cos(normalAngle.x) * distance, FastMath.sin(normalAngle.y) * distance, -FastMath.sin(normalAngle.z) * distance));
 
 
     }

@@ -29,7 +29,7 @@ public class Rune {
         //Axis Should Be Average Of All The Corners
     Head head = new Head(app, new Vector3f(1.5f, 1.5f, -1.5f), headNode, corners, new String[]{"all"});
 
-        //  head.updateUsingNormalAngleCurrencyLine("front", (byte) 0, (byte) 0, new Vector3f(90,0f,0f), new Vector3f(10,1,1));
+  //  head.updateUsingNormalAngleCurrencyLine("front", (byte) 0, (byte) 0, new Vector3f(180f,180f,90f),5);
 //    head.updateUsingNormalAngleCurrencyLine("front", (byte) 1, (byte) 0, new Vector3f(0f,1f,0f));
 //    head.updateUsingNormalAngleCurrencyLine("front", (byte) 1, (byte) 0, new Vector3f(0f,1f,0f));
 
