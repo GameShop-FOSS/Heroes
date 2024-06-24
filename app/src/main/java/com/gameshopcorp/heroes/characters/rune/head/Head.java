@@ -48,7 +48,6 @@ public class Head extends SuperCube {
 //            addCurrencyLine("front", (byte) 2, (byte) 1, new Vector3f(-.2161f, (.36f - 0000001f), 2));
 //            addCurrencyLine("front", (byte) 2, (byte) 2, new Vector3f((.24f - .0072001f), (.36f - 0000001f), 2));
 
-
         }
 
         if (Arrays.asList(renderSides).contains("all") || Arrays.asList(renderSides).contains("back")) {
@@ -94,7 +93,6 @@ public class Head extends SuperCube {
             setCurrencyLine("right", (byte) 0, (byte) 1, new Vector3f(0, -1f, -1));
             setCurrencyLine("right", (byte) 0, (byte) 2, new Vector3f(0, -1f, -2));
         }
-
 
         if (Arrays.asList(renderSides).contains("all") || Arrays.asList(renderSides).contains("left")) {
 
@@ -181,7 +179,6 @@ public class Head extends SuperCube {
                         new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(10, 2).vertices[0])
             });
         }
-
 
     }
 }

@@ -45,6 +45,10 @@ public class SuperCube {
 
         Vector3f[] corners = new Vector3f[8];
 
+        System.out.println(this.getClass().getName() + " " + new Vector3f(imports.get("frontBottomLeft")) + " " + new Vector3f(imports.get("frontTopLeft")) + " " + new Vector3f(imports.get("frontTopRight")) + " " + new Vector3f(imports.get("frontBottomRight")) + " " +
+                //Back:4
+                new Vector3f(imports.get("backBottomLeft")) + " " + new Vector3f(imports.get("backTopLeft")) + " " + new Vector3f(imports.get("backTopRight")) + " " + new Vector3f(imports.get("backBottomRight")));
+
         if (imports == null){
             corners = new Vector3f[]{
                     //Front:0
@@ -52,11 +56,12 @@ public class SuperCube {
                     //Back:4
                     new Vector3f(0,0,-3), new Vector3f(0,3,-3), new Vector3f(3,3,-3), new Vector3f(3,0,-3)};
         } else {
+
             corners = new Vector3f[]{
                     //Front:0
-                    imports.get("frontBottomLeft"),imports.get("frontTopLeft"), imports.get("frontTopRight"),imports.get("frontBottomRight"),
+                   new Vector3f(imports.get("frontBottomLeft")), new Vector3f(imports.get("frontTopLeft")), new Vector3f(imports.get("frontTopRight")),new Vector3f(imports.get("frontBottomRight")),
                     //Back:4
-                    imports.get("backBottomLeft"), imports.get("backTopLeft"),imports.get("backTopRight"), imports.get("backBottomRight")};
+                    new Vector3f(imports.get("backBottomLeft")), new Vector3f(imports.get("backTopLeft")), new Vector3f(imports.get("backTopRight")), new Vector3f(imports.get("backBottomRight"))};
 
         }
         addEdgeCurrencyLines(corners);

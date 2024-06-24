@@ -84,14 +84,34 @@ public class Rune {
 //        headNode.attachChild(hairBottomRightNode);
 
 
+        HashMap<String, Vector3f> corners2 = new HashMap<>();
+        corners2.put("frontBottomLeft", (Objects.requireNonNull(head.exports.get("EyeLeft"))[3]));
+        corners2.put("frontTopLeft", (Objects.requireNonNull(head.exports.get("EyeLeft"))[2]));
+        corners2.put("frontTopRight", (Objects.requireNonNull(head.exports.get("EyeLeft"))[1]));
+        corners2.put("frontBottomRight", (Objects.requireNonNull(head.exports.get("EyeLeft"))[0]));
+        corners2.put("backBottomLeft", (Objects.requireNonNull(head.exports.get("EyeLeft"))[3]));
+        corners2.put("backTopLeft", (Objects.requireNonNull(head.exports.get("EyeLeft"))[2]));
+        corners2.put("backTopRight", (Objects.requireNonNull(head.exports.get("EyeLeft"))[1]));
+        corners2.put("backBottomRight", (Objects.requireNonNull(head.exports.get("EyeLeft"))[0]));
+
         Node eyeLeftNode = new Node("EyeLeft");
-        Eye eyeLeft = new Eye(app, new Vector3f(), eyeLeftNode, head.exports.get("EyeLeft"));
+        Eye eyeLeft = new Eye(app, new Vector3f(), eyeLeftNode, corners2, new String[]{"front"});
 //        eyeLeftNode.scale(.25f);
         eyeLeftNode.move(0,0,0.075f);
         headNode.attachChild(eyeLeftNode);
 
+        HashMap<String, Vector3f> corners3 = new HashMap<>();
+        corners3.put("frontBottomLeft", (Objects.requireNonNull(head.exports.get("EyeRight"))[3]));
+        corners3.put("frontTopLeft", (Objects.requireNonNull(head.exports.get("EyeRight"))[2]));
+        corners3.put("frontTopRight", (Objects.requireNonNull(head.exports.get("EyeRight"))[1]));
+        corners3.put("frontBottomRight", (Objects.requireNonNull(head.exports.get("EyeRight"))[0]));
+        corners3.put("backBottomLeft", (Objects.requireNonNull(head.exports.get("EyeRight"))[3]));
+        corners3.put("backTopLeft", (Objects.requireNonNull(head.exports.get("EyeRight"))[2]));
+        corners3.put("backTopRight", (Objects.requireNonNull(head.exports.get("EyeRight"))[1]));
+        corners3.put("backBottomRight", (Objects.requireNonNull(head.exports.get("EyeRight"))[0]));
+
         Node eyeRightNode = new Node("EyeRight");
-        Eye eyeRight = new Eye(app, new Vector3f(), eyeRightNode, head.exports.get("EyeRight"));
+        Eye eyeRight = new Eye(app, new Vector3f(), eyeRightNode, corners3, new String[]{"front"});
         //eyeRightNode.scale(.25f);
         eyeRightNode.move(0,0,0.075f);
         headNode.attachChild(eyeRightNode);
