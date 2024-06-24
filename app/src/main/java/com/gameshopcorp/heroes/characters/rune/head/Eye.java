@@ -19,6 +19,7 @@ import com.jme3.texture.image.ColorSpace;
 import com.jme3.util.BufferUtils;
 
 import java.nio.ByteBuffer;
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class Eye extends SuperCube {
@@ -53,6 +54,7 @@ public class Eye extends SuperCube {
     public Eye(SimpleApplication app, Vector3f axis, Node node, HashMap<String, Vector3f> imports, String[] renderSides) {
         super(app, axis, node, imports, renderSides);
 
+        make();
 //        this.app = app;
 //        this.axis = axis.add(new Vector3f(axis));
 //
@@ -68,7 +70,53 @@ public class Eye extends SuperCube {
         //addTop();
         //addBottom();
     }
+
+    @Override
+    public void make() {
+        if (Arrays.asList(renderSides).contains("all") || Arrays.asList(renderSides).contains("front")) {
+
+            updateCurrencyLine("front", (byte) 1, (byte) 1, new Vector3f(0,0,.25f));
+            updateCurrencyLine("front", (byte) 1, (byte) 2, new Vector3f(0,0,.25f));
+            updateCurrencyLine("front", (byte) 2, (byte) 1, new Vector3f(0,0,.25f));
+            updateCurrencyLine("front", (byte) 2, (byte) 2, new Vector3f(0,0,.25f));
+        }
+    }
+
+    @Override
+    public Texture2D makeTexture(String side) {
+
+        //ATMS atms = new ATMS((byte) 1, layer);
+       // atmsFront.frames[0] = layerFront;
+        //ByteBuffer data = BufferUtils.createByteBuffer(atms.frames[0].outputLayer());
+        // ByteBuffer data = BufferUtils.createByteBuffer((byte)0,(byte)127,(byte)0,(byte)62);
+        //Image image = new Image(Image.Format.RGBA8, layer.width, layer.height, data, ColorSpace.Linear);
+
+        Texture2D texture = null;
+        if (side.equals("front")) {
+               texture = (Texture2D) this.app.getAssetManager().loadTexture("Textures/RuneEye.jpg");
+        }
+       // front = new CurrencyMesh(app, new CurrencyLine[]{cl, cl1, cl2, cl3}, texture, node);
+
+//        Layer layer= new Layer((short) 128, (short) 128);
+//        layer.drawCircle((short) 63, (short) 63, (short) 128, ColorRGBA.fromRGBA255(255,215,175,255));
+//
+//        //DRILL COLOR CODE
+//        // layer.drawCircle((short) 63, (short) 63, (short) 128, ColorRGBA.fromRGBA255(0,0,0,255));
+//
+//        ATMS atms = new ATMS((byte) 1, layer);
+//        //atmsFront.frames[0] = layerFront;
+//        ByteBuffer data = BufferUtils.createByteBuffer(atms.frames[0].outputLayer());
+//        // ByteBuffer data = BufferUtils.createByteBuffer((byte)0,(byte)127,(byte)0,(byte)62);
+//        Image image = new Image(Image.Format.RGBA8, 128, 128, data, ColorSpace.Linear);
+        return texture;
+    }
+
+//    @Override
+//    public void applyTextures() {
+//
+//    }
 }
+
 //    public void addEdgeCurrencyLines(){
 ////        Vector3f[] corners = new Vector3f[]{
 ////                //Front:0

@@ -18,7 +18,7 @@ import java.util.Objects;
 public class SuperCube {
 
     public HashMap<String, CurrencyMesh> sides;
-    SimpleApplication app;
+    public SimpleApplication app;
 
     HashMap<String, CurrencyLine> edges;
     public Vector3f axis;
