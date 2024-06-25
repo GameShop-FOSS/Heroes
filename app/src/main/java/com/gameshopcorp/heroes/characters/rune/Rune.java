@@ -95,9 +95,9 @@ public class Rune {
         corners2.put("backBottomRight", (Objects.requireNonNull(head.exports.get("EyeLeft"))[0]));
 
         Node eyeLeftNode = new Node("EyeLeft");
-        Eye eyeLeft = new Eye(app, new Vector3f(), eyeLeftNode, corners2, new String[]{"front"});
+        Eye eyeLeft = new Eye(app, new Vector3f(), eyeLeftNode, corners2, new String[]{"front"}, "left");
 //        eyeLeftNode.scale(.25f);
-        eyeLeftNode.move(0,0,0.075f);
+        eyeLeftNode.move(0,0,.1f);
         headNode.attachChild(eyeLeftNode);
 
         HashMap<String, Vector3f> corners3 = new HashMap<>();
@@ -111,9 +111,9 @@ public class Rune {
         corners3.put("backBottomRight", (Objects.requireNonNull(head.exports.get("EyeRight"))[0]));
 
         Node eyeRightNode = new Node("EyeRight");
-        Eye eyeRight = new Eye(app, new Vector3f(), eyeRightNode, corners3, new String[]{"front"});
+        Eye eyeRight = new Eye(app, new Vector3f(), eyeRightNode, corners3, new String[]{"front"}, "right");
         //eyeRightNode.scale(.25f);
-        eyeRightNode.move(0,0,0.075f);
+        eyeRightNode.move(0,0,.1f);
         headNode.attachChild(eyeRightNode);
 
         //headNode.rotate(0,90,0);

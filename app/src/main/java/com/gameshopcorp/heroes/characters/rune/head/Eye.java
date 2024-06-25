@@ -50,10 +50,12 @@ public class Eye extends SuperCube {
 //    public Node node;
 //
 //    Vector3f[] imports;
+    public String side;
 
-    public Eye(SimpleApplication app, Vector3f axis, Node node, HashMap<String, Vector3f> imports, String[] renderSides) {
+    public Eye(SimpleApplication app, Vector3f axis, Node node, HashMap<String, Vector3f> imports, String[] renderSides, String side) {
         super(app, axis, node, imports, renderSides);
 
+        this.side = side;
         make();
 //        this.app = app;
 //        this.axis = axis.add(new Vector3f(axis));
@@ -75,10 +77,20 @@ public class Eye extends SuperCube {
     public void make() {
         if (Arrays.asList(renderSides).contains("all") || Arrays.asList(renderSides).contains("front")) {
 
-            updateCurrencyLine("front", (byte) 1, (byte) 1, new Vector3f(0,0,.25f));
-            updateCurrencyLine("front", (byte) 1, (byte) 2, new Vector3f(0,0,.25f));
-            updateCurrencyLine("front", (byte) 2, (byte) 1, new Vector3f(0,0,.25f));
-            updateCurrencyLine("front", (byte) 2, (byte) 2, new Vector3f(0,0,.25f));
+            if (this.side.equals("right")) {
+                updateCurrencyLine("front", (byte) 1, (byte) 1, new Vector3f(0, 0, .25f));
+                updateCurrencyLine("front", (byte) 1, (byte) 2, new Vector3f(0, 0, .5f));
+                updateCurrencyLine("front", (byte) 2, (byte) 1, new Vector3f(0, 0, .25f));
+                updateCurrencyLine("front", (byte) 2, (byte) 2, new Vector3f(0, 0, .5f));
+            }
+            if (this.side.equals("left")) {
+                updateCurrencyLine("front", (byte) 1, (byte) 1, new Vector3f(0, 0, .5f));
+                updateCurrencyLine("front", (byte) 1, (byte) 2, new Vector3f(0, 0, .25f));
+                updateCurrencyLine("front", (byte) 2, (byte) 1, new Vector3f(0, 0, .5f));
+                updateCurrencyLine("front", (byte) 2, (byte) 2, new Vector3f(0, 0, .25f));
+            }
+
+
         }
     }
 
@@ -91,9 +103,30 @@ public class Eye extends SuperCube {
         // ByteBuffer data = BufferUtils.createByteBuffer((byte)0,(byte)127,(byte)0,(byte)62);
         //Image image = new Image(Image.Format.RGBA8, layer.width, layer.height, data, ColorSpace.Linear);
 
-        Texture2D texture = null;
-        if (side.equals("front")) {
-               texture = (Texture2D) this.app.getAssetManager().loadTexture("Textures/RuneEye.jpg");
+//        Texture2D texture = null;
+//        if (side.equals("front")) {
+//               texture = (Texture2D) this.app.getAssetManager().loadTexture("Textures/RuneEye.jpg");
+//        }
+
+        if (side.equals("front")){
+            Layer layer= new Layer((short) 128, (short) 128);
+        layer.drawCircle((short) 64, (short) 64, (short)100, ColorRGBA.fromRGBA255(255,255,255,255));
+
+        //DRAW FEACHURES
+       // layer.drawCircle((short) 25, (short) 2d5, (short) 4, ColorRGBA.fromRGBA255(255,225,185,255));
+
+       layer.drawCircle((short) 64, (short) 64, (short) 48, ColorRGBA.fromRGBA255(65,145,208,255));
+        //DRILL COLOR CODE
+            layer.drawCircle((short) 64, (short) 64, (short) 32, ColorRGBA.fromRGBA255(0,0,0,255));
+
+        //layer.drawLine(new Vector2f(16,24), new Vector2f(16, 8), (short) 4, ColorRGBA.fromRGBA255(0,0,0,255));
+        ATMS atms = new ATMS((byte) 1, layer);
+        //atmsFront.frames[0] = layerFront;
+        ByteBuffer data = BufferUtils.createByteBuffer(atms.frames[0].outputLayer());
+         //ByteBuffer data = BufferUtils.createByteBuffer((byte)0,(byte)127,(byte)0,(byte)62);
+        Image image = new Image(Image.Format.RGBA8, layer.width, layer.height, data, ColorSpace.Linear);
+
+        return new Texture2D(image);
         }
        // front = new CurrencyMesh(app, new CurrencyLine[]{cl, cl1, cl2, cl3}, texture, node);
 
@@ -108,7 +141,8 @@ public class Eye extends SuperCube {
 //        ByteBuffer data = BufferUtils.createByteBuffer(atms.frames[0].outputLayer());
 //        // ByteBuffer data = BufferUtils.createByteBuffer((byte)0,(byte)127,(byte)0,(byte)62);
 //        Image image = new Image(Image.Format.RGBA8, 128, 128, data, ColorSpace.Linear);
-        return texture;
+        //return texture;
+        return null;
     }
 
 //    @Override
