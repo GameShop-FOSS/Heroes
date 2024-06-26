@@ -77,19 +77,17 @@ public class Eye extends SuperCube {
     public void make() {
         if (Arrays.asList(renderSides).contains("all") || Arrays.asList(renderSides).contains("front")) {
 
-            if (this.side.equals("right")) {
-                updateCurrencyLine("front", (byte) 1, (byte) 1, new Vector3f(0, 0, .25f));
-                updateCurrencyLine("front", (byte) 1, (byte) 2, new Vector3f(0, 0, .5f));
-                updateCurrencyLine("front", (byte) 2, (byte) 1, new Vector3f(0, 0, .25f));
-                updateCurrencyLine("front", (byte) 2, (byte) 2, new Vector3f(0, 0, .5f));
-            }
-            if (this.side.equals("left")) {
-                updateCurrencyLine("front", (byte) 1, (byte) 1, new Vector3f(0, 0, .5f));
-                updateCurrencyLine("front", (byte) 1, (byte) 2, new Vector3f(0, 0, .25f));
-                updateCurrencyLine("front", (byte) 2, (byte) 1, new Vector3f(0, 0, .5f));
-                updateCurrencyLine("front", (byte) 2, (byte) 2, new Vector3f(0, 0, .25f));
-            }
 
+            updateCurrencyLine("front", (byte) 1, (byte) 1, new Vector3f(0, 0, .25f));
+            updateCurrencyLine("front", (byte) 1, (byte) 2, new Vector3f(0, 0, .25f));
+            updateCurrencyLine("front", (byte) 2, (byte) 1, new Vector3f(0, 0, .25f));
+            updateCurrencyLine("front", (byte) 2, (byte) 2, new Vector3f(0, 0, .25f));
+
+
+            updateCurrencyLine("front", (byte) 3, (byte) 1, new Vector3f(0, .25f, 0));
+            updateCurrencyLine("front", (byte) 3, (byte) 2, new Vector3f(0, .25f, 0));
+            updateCurrencyLine("front", (byte) 0, (byte) 1, new Vector3f(0, -.15f, 0));
+            updateCurrencyLine("front", (byte) 0, (byte) 2, new Vector3f(0, -.15f, 0));
 
         }
     }

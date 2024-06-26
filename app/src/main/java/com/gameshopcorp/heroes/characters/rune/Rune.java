@@ -34,22 +34,22 @@ public class Rune {
 //    head.updateUsingNormalAngleCurrencyLine("front", (byte) 1, (byte) 0, new Vector3f(0f,1f,0f));
 
         Node noseNode = new Node("Nose");
-        HashMap<String, Vector3f> corners1 = new HashMap<>();
-        corners1.put("frontBottomLeft", (Objects.requireNonNull(head.exports.get("Nose"))[3]).add(0,0, 1));
-        corners1.put("frontTopLeft", (Objects.requireNonNull(head.exports.get("Nose"))[2]).add(-.125f,-.25f, .5f));
-        corners1.put("frontTopRight", (Objects.requireNonNull(head.exports.get("Nose"))[1]).add(.125f,-.25f,.5f));
-        corners1.put("frontBottomRight", (Objects.requireNonNull(head.exports.get("Nose"))[0]).add(0,0,1));
-        corners1.put("backBottomLeft", (Objects.requireNonNull(head.exports.get("Nose"))[3]));
-        corners1.put("backTopLeft", (Objects.requireNonNull(head.exports.get("Nose"))[2]));
-        corners1.put("backTopRight", (Objects.requireNonNull(head.exports.get("Nose"))[1]));
-        corners1.put("backBottomRight", (Objects.requireNonNull(head.exports.get("Nose"))[0]));
+//        HashMap<String, Vector3f> corners1 = new HashMap<>();
+//        corners1.put("frontBottomLeft", (Objects.requireNonNull(head.exports.get("Nose"))[3]).add(0,0, 1));
+//        corners1.put("frontTopLeft", (Objects.requireNonNull(head.exports.get("Nose"))[2]).add(-.125f,-.25f, .5f));
+//        corners1.put("frontTopRight", (Objects.requireNonNull(head.exports.get("Nose"))[1]).add(.125f,-.25f,.5f));
+//        corners1.put("frontBottomRight", (Objects.requireNonNull(head.exports.get("Nose"))[0]).add(0,0,1));
+//        corners1.put("backBottomLeft", (Objects.requireNonNull(head.exports.get("Nose"))[3]));
+//        corners1.put("backTopLeft", (Objects.requireNonNull(head.exports.get("Nose"))[2]));
+//        corners1.put("backTopRight", (Objects.requireNonNull(head.exports.get("Nose"))[1]));
+//        corners1.put("backBottomRight", (Objects.requireNonNull(head.exports.get("Nose"))[0]));
 //        Vector3f[] corners = new Vector3f[]{
 //                //Front:0
 //                axis.add(new Vector3f(.5f, -0, -.5f)), axis.add(new Vector3f(1.25f, 3f, -2f)), axis.add(new Vector3f(1.75f, 3, -2f)), axis.add(new Vector3f(2.5f, -0, -.5f)),
 //                //Back:4
 //                axis.add(new Vector3f(0, 0, -3)), axis.add(new Vector3f(1.25f, 3, -3)), axis.add(new Vector3f(1.75f, 3, -3)), axis.add(new Vector3f(3, 0, -3))};
 
-        Nose nose = new Nose(app, new Vector3f(), noseNode, corners1, new String[]{"all"});// CHANGE BEFORE RUNNING
+        Nose nose = new Nose(app, new Vector3f(), noseNode, head.exports.get("Nose"), new String[]{"all"});// CHANGE BEFORE RUNNING
 
         //noseNode.scale(.25f);
         //noseNode.scale(1,2,1);
@@ -83,38 +83,41 @@ public class Rune {
 //        hairBottomRightNode.rotate(-115,-45,0);
 //        headNode.attachChild(hairBottomRightNode);
 
-
-        HashMap<String, Vector3f> corners2 = new HashMap<>();
-        corners2.put("frontBottomLeft", (Objects.requireNonNull(head.exports.get("EyeLeft"))[3]));
-        corners2.put("frontTopLeft", (Objects.requireNonNull(head.exports.get("EyeLeft"))[2]));
-        corners2.put("frontTopRight", (Objects.requireNonNull(head.exports.get("EyeLeft"))[1]));
-        corners2.put("frontBottomRight", (Objects.requireNonNull(head.exports.get("EyeLeft"))[0]));
-        corners2.put("backBottomLeft", (Objects.requireNonNull(head.exports.get("EyeLeft"))[3]));
-        corners2.put("backTopLeft", (Objects.requireNonNull(head.exports.get("EyeLeft"))[2]));
-        corners2.put("backTopRight", (Objects.requireNonNull(head.exports.get("EyeLeft"))[1]));
-        corners2.put("backBottomRight", (Objects.requireNonNull(head.exports.get("EyeLeft"))[0]));
+//
+//        HashMap<String, Vector3f> corners2 = new HashMap<>();
+//        corners2.put("frontBottomLeft", (Objects.requireNonNull(head.exports.get("EyeLeft"))[3]));
+//        corners2.put("frontTopLeft", (Objects.requireNonNull(head.exports.get("EyeLeft"))[2]));
+//        corners2.put("frontTopRight", (Objects.requireNonNull(head.exports.get("EyeLeft"))[1]));
+//        corners2.put("frontBottomRight", (Objects.requireNonNull(head.exports.get("EyeLeft"))[0]));
+//        corners2.put("backBottomLeft", (Objects.requireNonNull(head.exports.get("EyeLeft"))[3]));
+//        corners2.put("backTopLeft", (Objects.requireNonNull(head.exports.get("EyeLeft"))[2]));
+//        corners2.put("backTopRight", (Objects.requireNonNull(head.exports.get("EyeLeft"))[1]));
+//        corners2.put("backBottomRight", (Objects.requireNonNull(head.exports.get("EyeLeft"))[0]));
 
         Node eyeLeftNode = new Node("EyeLeft");
-        Eye eyeLeft = new Eye(app, new Vector3f(), eyeLeftNode, corners2, new String[]{"front"}, "left");
+        Eye eyeLeft = new Eye(app, new Vector3f(), eyeLeftNode, head.exports.get("EyeLeft"), new String[]{"front"}, "left");
 //        eyeLeftNode.scale(.25f);
         eyeLeftNode.move(0,0,.1f);
         headNode.attachChild(eyeLeftNode);
 
-        HashMap<String, Vector3f> corners3 = new HashMap<>();
-        corners3.put("frontBottomLeft", (Objects.requireNonNull(head.exports.get("EyeRight"))[3]));
-        corners3.put("frontTopLeft", (Objects.requireNonNull(head.exports.get("EyeRight"))[2]));
-        corners3.put("frontTopRight", (Objects.requireNonNull(head.exports.get("EyeRight"))[1]));
-        corners3.put("frontBottomRight", (Objects.requireNonNull(head.exports.get("EyeRight"))[0]));
-        corners3.put("backBottomLeft", (Objects.requireNonNull(head.exports.get("EyeRight"))[3]));
-        corners3.put("backTopLeft", (Objects.requireNonNull(head.exports.get("EyeRight"))[2]));
-        corners3.put("backTopRight", (Objects.requireNonNull(head.exports.get("EyeRight"))[1]));
-        corners3.put("backBottomRight", (Objects.requireNonNull(head.exports.get("EyeRight"))[0]));
+//        HashMap<String, Vector3f> corners3 = new HashMap<>();
+//        corners3.put("frontBottomLeft", (Objects.requireNonNull(head.exports.get("EyeRight"))[3]));
+//        corners3.put("frontTopLeft", (Objects.requireNonNull(head.exports.get("EyeRight"))[2]));
+//        corners3.put("frontTopRight", (Objects.requireNonNull(head.exports.get("EyeRight"))[1]));
+//        corners3.put("frontBottomRight", (Objects.requireNonNull(head.exports.get("EyeRight"))[0]));
+//        corners3.put("backBottomLeft", (Objects.requireNonNull(head.exports.get("EyeRight"))[3]));
+//        corners3.put("backTopLeft", (Objects.requireNonNull(head.exports.get("EyeRight"))[2]));
+//        corners3.put("backTopRight", (Objects.requireNonNull(head.exports.get("EyeRight"))[1]));
+//        corners3.put("backBottomRight", (Objects.requireNonNull(head.exports.get("EyeRight"))[0]));
 
         Node eyeRightNode = new Node("EyeRight");
-        Eye eyeRight = new Eye(app, new Vector3f(), eyeRightNode, corners3, new String[]{"front"}, "right");
+        Eye eyeRight = new Eye(app, new Vector3f(), eyeRightNode, head.exports.get("EyeRight"), new String[]{"front"}, "right");
         //eyeRightNode.scale(.25f);
         eyeRightNode.move(0,0,.1f);
         headNode.attachChild(eyeRightNode);
+
+
+
 
         //headNode.rotate(0,90,0);
         Node runeNode = new Node("Rune");

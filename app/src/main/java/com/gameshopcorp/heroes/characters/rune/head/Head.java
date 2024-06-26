@@ -147,37 +147,101 @@ public class Head extends SuperCube {
     public void makeExports(){
 
         if (Arrays.asList(renderSides).contains("all") || Arrays.asList(renderSides).contains("front")) {
-            exports.put("EyeRight", new Vector3f[]{
-                    new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(2, 6).vertices[0]),
-                    new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(2, 10).vertices[0]),
-                    new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(6, 10).vertices[0]),
-                    new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(6, 6).vertices[0]) // 4 right, 12 Up
-            });
+
+            HashMap<String, Vector3f> eyeRight = new HashMap<>();
+
+            eyeRight.put("frontBottomLeft", new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(6, 6).vertices[0]));
+            eyeRight.put("frontTopLeft",  new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(6, 10).vertices[0]));
+            eyeRight.put("frontTopRight",  new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(2, 10).vertices[0]));
+            eyeRight.put("frontBottomRight", new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(2, 6).vertices[0]));
+            eyeRight.put("backBottomLeft", new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(6, 6).vertices[0]));
+            eyeRight.put("backTopLeft",  new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(6, 10).vertices[0]));
+            eyeRight.put("backTopRight",  new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(2, 10).vertices[0]));
+            eyeRight.put("backBottomRight",new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(2, 6).vertices[0]));
+
+            exports.put("EyeRight", eyeRight);
+//            exports.put("EyeRight", eyeRight);
+//
+//
+//            exports.put("EyeRight", new Vector3f[]{
+//                    new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(2, 6).vertices[0]),
+//                    new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(2, 10).vertices[0]),
+//                    new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(6, 10).vertices[0]),
+//                    new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(6, 6).vertices[0]) // 4 right, 12 Up
+//            });
         }
         if (Arrays.asList(renderSides).contains("all") || Arrays.asList(renderSides).contains("front")) {
-            exports.put("EyeLeft", new Vector3f[]{
-                    new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(10, 6).vertices[0]),
-                    new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(10, 10).vertices[0]),
-                    new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(14, 10).vertices[0]),
-                    new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(14, 6).vertices[0]) // 4 right, 12 Up
-            });
+
+
+            HashMap<String, Vector3f> eyeLeft = new HashMap<>();
+
+            eyeLeft.put("frontBottomLeft", new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(14, 6).vertices[0]));
+            eyeLeft.put("frontTopLeft",  new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(14, 10).vertices[0]));
+            eyeLeft.put("frontTopRight",  new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(10, 10).vertices[0]));
+            eyeLeft.put("frontBottomRight", new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(10, 6).vertices[0]));
+            eyeLeft.put("backBottomLeft", new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(14, 6).vertices[0]));
+            eyeLeft.put("backTopLeft",  new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(14, 10).vertices[0]));
+            eyeLeft.put("backTopRight",  new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(10, 10).vertices[0]));
+            eyeLeft.put("backBottomRight",new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(10, 6).vertices[0]));
+
+            exports.put("EyeLeft", eyeLeft);
+
+//            exports.put("EyeLeft", new Vector3f[]{
+//                    new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(10, 6).vertices[0]),
+//                    new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(10, 10).vertices[0]),
+//                    new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(14, 10).vertices[0]),
+//                    new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(14, 6).vertices[0]) // 4 right, 12 Up
+//            });
         }
         if (Arrays.asList(renderSides).contains("all") || Arrays.asList(renderSides).contains("bottom")) {
-            exports.put("Neck", new Vector3f[]{
-                    new Vector3f(Objects.requireNonNull(sides.get("bottom")).getMeshFromValue(4, 0).vertices[0]),
-                    new Vector3f(Objects.requireNonNull(sides.get("bottom")).getMeshFromValue(4, 8).vertices[0]),
-                    new Vector3f(Objects.requireNonNull(sides.get("bottom")).getMeshFromValue(12, 8).vertices[0]),
-                    new Vector3f(Objects.requireNonNull(sides.get("bottom")).getMeshFromValue(12, 0).vertices[0])
-            });
+
+            HashMap<String, Vector3f> neck = new HashMap<>();
+
+            neck.put("frontBottomLeft", new Vector3f(Objects.requireNonNull(sides.get("bottom")).getMeshFromValue(12, 0).vertices[0]));
+            neck.put("frontTopLeft",  new Vector3f(Objects.requireNonNull(sides.get("bottom")).getMeshFromValue(12, 8).vertices[0]));
+            neck.put("frontTopRight",  new Vector3f(Objects.requireNonNull(sides.get("bottom")).getMeshFromValue(4, 8).vertices[0]));
+            neck.put("frontBottomRight", new Vector3f(Objects.requireNonNull(sides.get("bottom")).getMeshFromValue(4, 0).vertices[0]));
+            neck.put("backBottomLeft", new Vector3f(Objects.requireNonNull(sides.get("bottom")).getMeshFromValue(12, 0).vertices[0]));
+            neck.put("backTopLeft",  new Vector3f(Objects.requireNonNull(sides.get("bottom")).getMeshFromValue(12, 8).vertices[0]));
+            neck.put("backTopRight",  new Vector3f(Objects.requireNonNull(sides.get("bottom")).getMeshFromValue(4, 8).vertices[0]));
+            neck.put("backBottomRight",new Vector3f(Objects.requireNonNull(sides.get("bottom")).getMeshFromValue(4, 0).vertices[0]));
+
+
+            exports.put("Neck", neck);
+//            exports.put("Neck", new Vector3f[]{
+//                    new Vector3f(Objects.requireNonNull(sides.get("bottom")).getMeshFromValue(4, 0).vertices[0]),
+//                    new Vector3f(Objects.requireNonNull(sides.get("bottom")).getMeshFromValue(4, 8).vertices[0]),
+//                    new Vector3f(Objects.requireNonNull(sides.get("bottom")).getMeshFromValue(12, 8).vertices[0]),
+//                    new Vector3f(Objects.requireNonNull(sides.get("bottom")).getMeshFromValue(12, 0).vertices[0])
+//            });
         }
         if (Arrays.asList(renderSides).contains("all") || Arrays.asList(renderSides).contains("front")){
 
-            exports.put("Nose", new Vector3f[]{
-                new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(6, 2).vertices[0]),
-                        new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(6, 6).vertices[0]),
-                        new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(10, 6).vertices[0]),
-                        new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(10, 2).vertices[0])
-            });
+
+            HashMap<String, Vector3f> nose = new HashMap<>();
+
+//            add(0,0, 1));
+//            corners1.put("frontTopLeft", (Objects.requireNonNull(head.exports.get("Nose"))[2]).add(-.125f,-.25f, .5f));
+//            corners1.put("frontTopRight", (Objects.requireNonNull(head.exports.get("Nose"))[1]).add(.125f,-.25f,.5f));
+//            corners1.put("frontBottomRight", (Objects.requireNonNull(head.exports.get("Nose"))[0]).add(0,0,1));
+
+            nose.put("frontBottomLeft", new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(10, 2).vertices[0]).add(0,0,1));
+            nose.put("frontTopLeft",  new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(10, 6).vertices[0]).add(-.125f,-.25f, .5f));
+            nose.put("frontTopRight",  new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(6, 6).vertices[0]).add(.125f,-.25f,.5f));
+            nose.put("frontBottomRight", new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(6, 2).vertices[0]).add(0,0,1));
+            nose.put("backBottomLeft", new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(10, 2).vertices[0]));
+            nose.put("backTopLeft",  new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(10, 6).vertices[0]));
+            nose.put("backTopRight",  new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(6, 6).vertices[0]));
+            nose.put("backBottomRight",new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(6, 2).vertices[0]));
+
+
+            exports.put("Nose", nose);
+//            exports.put("Nose", new Vector3f[]{
+//                new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(6, 2).vertices[0]),
+//                        new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(6, 6).vertices[0]),
+//                        new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(10, 6).vertices[0]),
+//                        new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(10, 2).vertices[0])
+//            });
         }
 
     }

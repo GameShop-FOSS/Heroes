@@ -28,7 +28,7 @@ public class SuperCube {
    // public ArrayList<GroupCurrencyLine[]> groupCurrencyLines;
 
     //public HashMap<String, Vector3f> imports;
-    public HashMap<String, Vector3f[]> exports;
+    public HashMap<String, HashMap<String, Vector3f>> exports;
     public String[] renderSides;
     public SuperCube(SimpleApplication app, Vector3f axis, Node node, HashMap<String, Vector3f> imports, String[] renderSides){
 
