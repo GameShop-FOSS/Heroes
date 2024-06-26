@@ -45,9 +45,9 @@ public class SuperCube {
 
         Vector3f[] corners = new Vector3f[8];
 
-        System.out.println(this.getClass().getName() + " " + new Vector3f(imports.get("frontBottomLeft")) + " " + new Vector3f(imports.get("frontTopLeft")) + " " + new Vector3f(imports.get("frontTopRight")) + " " + new Vector3f(imports.get("frontBottomRight")) + " " +
-                //Back:4
-                new Vector3f(imports.get("backBottomLeft")) + " " + new Vector3f(imports.get("backTopLeft")) + " " + new Vector3f(imports.get("backTopRight")) + " " + new Vector3f(imports.get("backBottomRight")));
+//        System.out.println(this.getClass().getName() + " " + new Vector3f(imports.get("frontBottomLeft")) + " " + new Vector3f(imports.get("frontTopLeft")) + " " + new Vector3f(imports.get("frontTopRight")) + " " + new Vector3f(imports.get("frontBottomRight")) + " " +
+//                //Back:4
+//                new Vector3f(imports.get("backBottomLeft")) + " " + new Vector3f(imports.get("backTopLeft")) + " " + new Vector3f(imports.get("backTopRight")) + " " + new Vector3f(imports.get("backBottomRight")));
 
         if (imports == null){
             corners = new Vector3f[]{

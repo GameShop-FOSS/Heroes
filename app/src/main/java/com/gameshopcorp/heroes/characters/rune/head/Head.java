@@ -197,14 +197,14 @@ public class Head extends SuperCube {
 
             HashMap<String, Vector3f> neck = new HashMap<>();
 
-            neck.put("frontBottomLeft", new Vector3f(Objects.requireNonNull(sides.get("bottom")).getMeshFromValue(12, 0).vertices[0]));
-            neck.put("frontTopLeft",  new Vector3f(Objects.requireNonNull(sides.get("bottom")).getMeshFromValue(12, 8).vertices[0]));
-            neck.put("frontTopRight",  new Vector3f(Objects.requireNonNull(sides.get("bottom")).getMeshFromValue(4, 8).vertices[0]));
-            neck.put("frontBottomRight", new Vector3f(Objects.requireNonNull(sides.get("bottom")).getMeshFromValue(4, 0).vertices[0]));
-            neck.put("backBottomLeft", new Vector3f(Objects.requireNonNull(sides.get("bottom")).getMeshFromValue(12, 0).vertices[0]));
-            neck.put("backTopLeft",  new Vector3f(Objects.requireNonNull(sides.get("bottom")).getMeshFromValue(12, 8).vertices[0]));
-            neck.put("backTopRight",  new Vector3f(Objects.requireNonNull(sides.get("bottom")).getMeshFromValue(4, 8).vertices[0]));
-            neck.put("backBottomRight",new Vector3f(Objects.requireNonNull(sides.get("bottom")).getMeshFromValue(4, 0).vertices[0]));
+            neck.put("frontBottomLeft", new Vector3f(Objects.requireNonNull(sides.get("bottom")).getMeshFromValue(12, 12).vertices[0]).add(0,-2.0f,0f));
+            neck.put("frontTopLeft",  new Vector3f(Objects.requireNonNull(sides.get("bottom")).getMeshFromValue(12, 12).vertices[0]));
+            neck.put("frontTopRight",  new Vector3f(Objects.requireNonNull(sides.get("bottom")).getMeshFromValue(4, 12).vertices[0]));
+            neck.put("frontBottomRight", new Vector3f(Objects.requireNonNull(sides.get("bottom")).getMeshFromValue(4, 12).vertices[0]).add(0,-2.0f,0f));
+            neck.put("backBottomLeft", new Vector3f(Objects.requireNonNull(sides.get("bottom")).getMeshFromValue(12, 4).vertices[0]).add(0,-3f,0f));
+            neck.put("backTopLeft",  new Vector3f(Objects.requireNonNull(sides.get("bottom")).getMeshFromValue(12, 4).vertices[0]));
+            neck.put("backTopRight",  new Vector3f(Objects.requireNonNull(sides.get("bottom")).getMeshFromValue(4, 4).vertices[0]));
+            neck.put("backBottomRight",new Vector3f(Objects.requireNonNull(sides.get("bottom")).getMeshFromValue(4, 4).vertices[0]).add(0,-3f,0f));
 
 
             exports.put("Neck", neck);
