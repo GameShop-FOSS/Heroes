@@ -96,6 +96,8 @@ public class SuperCube {
 
         }
 
+        make();
+        makeExports();
         //addGroupCurrencyLines();
     }
 

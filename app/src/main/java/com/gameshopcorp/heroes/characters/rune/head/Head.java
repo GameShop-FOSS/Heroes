@@ -14,8 +14,8 @@ public class Head extends SuperCube {
     public Head(SimpleApplication app, Vector3f axis, Node node, HashMap<String, Vector3f> imports, String[] renderSides){
         super(app, axis, node, imports, renderSides);
 
-        make();
-        makeExports();
+//        make();
+//        makeExports();
     }
 
     @Override

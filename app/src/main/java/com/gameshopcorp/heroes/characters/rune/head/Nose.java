@@ -48,7 +48,7 @@ public class Nose extends SuperCube {
     public Nose(SimpleApplication app, Vector3f axis, Node node, HashMap<String, Vector3f> imports, String[] renderSides) {
         super(app, axis, node, imports, renderSides);
 
-        make();
+       // make();
     }
 
     @Override
@@ -74,10 +74,10 @@ public class Nose extends SuperCube {
         }
 
     }
-    public void addEdgeCurrencyLines() {
-
-
-    }
+//    public void addEdgeCurrencyLines() {
+//
+//
+//    }
 
 
 }

@@ -56,7 +56,7 @@ public class Eye extends SuperCube {
         super(app, axis, node, imports, renderSides);
 
         this.side = side;
-        make();
+        //make();
 //        this.app = app;
 //        this.axis = axis.add(new Vector3f(axis));
 //
