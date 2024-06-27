@@ -3,6 +3,7 @@ package com.gameshopcorp.heroes.characters.rune;
 import com.gameshopcorp.heroes.characters.rune.body.Abs;
 import com.gameshopcorp.heroes.characters.rune.body.Neck;
 import com.gameshopcorp.heroes.characters.rune.body.Torso;
+import com.gameshopcorp.heroes.characters.rune.body.Waist;
 import com.gameshopcorp.heroes.characters.rune.head.Eye;
 import com.gameshopcorp.heroes.characters.rune.head.Head;
 import com.gameshopcorp.heroes.characters.rune.head.Nose;
@@ -94,6 +95,10 @@ public class Rune {
         Node absNode = new Node("Abs");
         Abs abs = new Abs(app, new Vector3f(), absNode, torso.exports.get("Abs"), new String[]{"all"});
         torsoNode.attachChild(absNode);
+
+        Node waistNode = new Node("Waist");
+        Waist waist = new Waist(app, new Vector3f(),  waistNode, abs.exports.get("Waist"), new String[]{"all"});
+        absNode.attachChild(waistNode);
 
 
 
