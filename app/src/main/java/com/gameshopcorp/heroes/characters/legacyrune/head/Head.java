@@ -1,4 +1,4 @@
-package com.gameshopcorp.heroes.characters.rune.head;
+package com.gameshopcorp.heroes.characters.legacyrune.head;
 
 import com.gameshopcorp.heroes.graphics.SuperCube;
 import com.jme3.app.SimpleApplication;

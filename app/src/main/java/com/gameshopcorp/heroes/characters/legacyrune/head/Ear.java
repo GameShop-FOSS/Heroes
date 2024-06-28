@@ -1,4 +1,4 @@
-package com.gameshopcorp.heroes.characters.rune.head;
+package com.gameshopcorp.heroes.characters.legacyrune.head;
 
 import com.gameshopcorp.heroes.graphics.ATMS;
 import com.gameshopcorp.heroes.graphics.CurrencyLine;

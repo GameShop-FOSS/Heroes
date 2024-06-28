@@ -1,4 +1,4 @@
-package com.gameshopcorp.heroes.characters.rune.limbs.hand;
+package com.gameshopcorp.heroes.characters.legacyrune.limbs.hand;
 
 import com.gameshopcorp.heroes.graphics.SuperCube;
 import com.jme3.app.SimpleApplication;
