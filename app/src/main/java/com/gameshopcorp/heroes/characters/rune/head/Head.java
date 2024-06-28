@@ -150,14 +150,14 @@ public class Head extends SuperCube {
 
             HashMap<String, Vector3f> eyeRight = new HashMap<>();
 
-            eyeRight.put("frontBottomLeft", new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(6, 6).vertices[0]));
-            eyeRight.put("frontTopLeft",  new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(6, 10).vertices[0]));
-            eyeRight.put("frontTopRight",  new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(2, 10).vertices[0]));
-            eyeRight.put("frontBottomRight", new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(2, 6).vertices[0]));
-            eyeRight.put("backBottomLeft", new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(6, 6).vertices[0]));
-            eyeRight.put("backTopLeft",  new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(6, 10).vertices[0]));
-            eyeRight.put("backTopRight",  new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(2, 10).vertices[0]));
-            eyeRight.put("backBottomRight",new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(2, 6).vertices[0]));
+            eyeRight.put("frontBottomLeft", new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(2, 6).vertices[0]));
+            eyeRight.put("frontTopLeft",  new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(2, 10).vertices[0]));
+            eyeRight.put("frontTopRight",  new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(6, 10).vertices[0]));
+            eyeRight.put("frontBottomRight", new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(6, 6).vertices[0]));
+            eyeRight.put("backBottomLeft", new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(2, 6).vertices[0]));
+            eyeRight.put("backTopLeft",  new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(2, 10).vertices[0]));
+            eyeRight.put("backTopRight",  new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(6, 10).vertices[0]));
+            eyeRight.put("backBottomRight",new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(6, 6).vertices[0]));
 
             exports.put("EyeRight", eyeRight);
 //            exports.put("EyeRight", eyeRight);
@@ -175,14 +175,14 @@ public class Head extends SuperCube {
 
             HashMap<String, Vector3f> eyeLeft = new HashMap<>();
 
-            eyeLeft.put("frontBottomLeft", new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(14, 6).vertices[0]));
-            eyeLeft.put("frontTopLeft",  new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(14, 10).vertices[0]));
-            eyeLeft.put("frontTopRight",  new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(10, 10).vertices[0]));
-            eyeLeft.put("frontBottomRight", new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(10, 6).vertices[0]));
-            eyeLeft.put("backBottomLeft", new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(14, 6).vertices[0]));
-            eyeLeft.put("backTopLeft",  new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(14, 10).vertices[0]));
-            eyeLeft.put("backTopRight",  new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(10, 10).vertices[0]));
-            eyeLeft.put("backBottomRight",new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(10, 6).vertices[0]));
+            eyeLeft.put("frontBottomLeft", new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(10, 6).vertices[0]));
+            eyeLeft.put("frontTopLeft",  new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(10, 10).vertices[0]));
+            eyeLeft.put("frontTopRight",  new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(14, 10).vertices[0]));
+            eyeLeft.put("frontBottomRight", new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(14, 6).vertices[0]));
+            eyeLeft.put("backBottomLeft", new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(10, 6).vertices[0]));
+            eyeLeft.put("backTopLeft",  new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(10, 10).vertices[0]));
+            eyeLeft.put("backTopRight",  new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(14, 10).vertices[0]));
+            eyeLeft.put("backBottomRight",new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(14, 6).vertices[0]));
 
             exports.put("EyeLeft", eyeLeft);
 
@@ -197,14 +197,14 @@ public class Head extends SuperCube {
 
             HashMap<String, Vector3f> neck = new HashMap<>();
 
-            neck.put("frontBottomLeft", new Vector3f(Objects.requireNonNull(sides.get("bottom")).getMeshFromValue(12, 12).vertices[0]).add(0,-2.0f,0f));
-            neck.put("frontTopLeft",  new Vector3f(Objects.requireNonNull(sides.get("bottom")).getMeshFromValue(12, 12).vertices[0]));
-            neck.put("frontTopRight",  new Vector3f(Objects.requireNonNull(sides.get("bottom")).getMeshFromValue(4, 12).vertices[0]));
-            neck.put("frontBottomRight", new Vector3f(Objects.requireNonNull(sides.get("bottom")).getMeshFromValue(4, 12).vertices[0]).add(0,-2.0f,0f));
-            neck.put("backBottomLeft", new Vector3f(Objects.requireNonNull(sides.get("bottom")).getMeshFromValue(12, 4).vertices[0]).add(0,-3f,0f));
-            neck.put("backTopLeft",  new Vector3f(Objects.requireNonNull(sides.get("bottom")).getMeshFromValue(12, 4).vertices[0]));
-            neck.put("backTopRight",  new Vector3f(Objects.requireNonNull(sides.get("bottom")).getMeshFromValue(4, 4).vertices[0]));
-            neck.put("backBottomRight",new Vector3f(Objects.requireNonNull(sides.get("bottom")).getMeshFromValue(4, 4).vertices[0]).add(0,-3f,0f));
+            neck.put("frontBottomLeft", new Vector3f(Objects.requireNonNull(sides.get("bottom")).getMeshFromValue(4, 12).vertices[0]).add(0,-2.0f,0f));
+            neck.put("frontTopLeft",  new Vector3f(Objects.requireNonNull(sides.get("bottom")).getMeshFromValue(4, 12).vertices[0]));
+            neck.put("frontTopRight",  new Vector3f(Objects.requireNonNull(sides.get("bottom")).getMeshFromValue(12, 12).vertices[0]));
+            neck.put("frontBottomRight", new Vector3f(Objects.requireNonNull(sides.get("bottom")).getMeshFromValue(12, 12).vertices[0]).add(0,-2.0f,0f));
+            neck.put("backBottomLeft", new Vector3f(Objects.requireNonNull(sides.get("bottom")).getMeshFromValue(4, 4).vertices[0]).add(0,-3f,0f));
+            neck.put("backTopLeft",  new Vector3f(Objects.requireNonNull(sides.get("bottom")).getMeshFromValue(4, 4).vertices[0]));
+            neck.put("backTopRight",  new Vector3f(Objects.requireNonNull(sides.get("bottom")).getMeshFromValue(12, 4).vertices[0]));
+            neck.put("backBottomRight",new Vector3f(Objects.requireNonNull(sides.get("bottom")).getMeshFromValue(12, 4).vertices[0]).add(0,-3f,0f));
 
 
             exports.put("Neck", neck);
@@ -225,14 +225,14 @@ public class Head extends SuperCube {
 //            corners1.put("frontTopRight", (Objects.requireNonNull(head.exports.get("Nose"))[1]).add(.125f,-.25f,.5f));
 //            corners1.put("frontBottomRight", (Objects.requireNonNull(head.exports.get("Nose"))[0]).add(0,0,1));
 
-            nose.put("frontBottomLeft", new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(10, 2).vertices[0]).add(0,0,1));
-            nose.put("frontTopLeft",  new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(10, 6).vertices[0]).add(-.125f,-.25f, .5f));
-            nose.put("frontTopRight",  new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(6, 6).vertices[0]).add(.125f,-.25f,.5f));
-            nose.put("frontBottomRight", new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(6, 2).vertices[0]).add(0,0,1));
-            nose.put("backBottomLeft", new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(10, 2).vertices[0]));
-            nose.put("backTopLeft",  new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(10, 6).vertices[0]));
-            nose.put("backTopRight",  new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(6, 6).vertices[0]));
-            nose.put("backBottomRight",new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(6, 2).vertices[0]));
+            nose.put("frontBottomLeft", new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(6, 2).vertices[0]).add(0,0,1));
+            nose.put("frontTopLeft",  new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(6, 6).vertices[0]).add(-.125f,-.25f, .5f));
+            nose.put("frontTopRight",  new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(10, 6).vertices[0]).add(.125f,-.25f,.5f));
+            nose.put("frontBottomRight", new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(10, 2).vertices[0]).add(0,0,1));
+            nose.put("backBottomLeft", new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(6, 2).vertices[0]));
+            nose.put("backTopLeft",  new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(6, 6).vertices[0]));
+            nose.put("backTopRight",  new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(10, 6).vertices[0]));
+            nose.put("backBottomRight",new Vector3f(Objects.requireNonNull(sides.get("front")).getMeshFromValue(10, 2).vertices[0]));
 
 
             exports.put("Nose", nose);

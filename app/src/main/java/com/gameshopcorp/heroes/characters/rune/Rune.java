@@ -7,6 +7,7 @@ import com.gameshopcorp.heroes.characters.rune.body.Waist;
 import com.gameshopcorp.heroes.characters.rune.head.Eye;
 import com.gameshopcorp.heroes.characters.rune.head.Head;
 import com.gameshopcorp.heroes.characters.rune.head.Nose;
+import com.gameshopcorp.heroes.characters.rune.limbs.BackLeg;
 import com.jme3.app.SimpleApplication;
 import com.jme3.math.Vector3f;
 import com.jme3.scene.Node;
@@ -30,6 +31,14 @@ public class Rune {
         corners.put("backTopRight", (new Vector3f(2.25f,3,-3)));
         corners.put("backBottomRight", (new Vector3f(2.25f,1,-3)));
 
+//        corners.put("frontBottomLeft", (new Vector3f(2.5f,-1,0)));
+//        corners.put("frontTopLeft", new Vector3f(2.25f, 3,0));
+//        corners.put("frontTopRight", (new Vector3f(.75f,3,0)));
+//        corners.put("frontBottomRight", (new Vector3f(.5f,-1,0)));
+//        corners.put("backBottomLeft", (new Vector3f(2.25f,1,-3)));
+//        corners.put("backTopLeft", (new Vector3f(2.25f,3,-3)));
+//        corners.put("backTopRight", (new Vector3f(.75f,3,-3)));
+//        corners.put("backBottomRight", (new Vector3f(.75f,1,-3)));
         //Axis Should Be Average Of All The Corners
     Head head = new Head(app, new Vector3f(1.5f, 1.5f, -1.5f), headNode, corners, new String[]{"all"});
 
@@ -100,6 +109,13 @@ public class Rune {
         Waist waist = new Waist(app, new Vector3f(),  waistNode, abs.exports.get("Waist"), new String[]{"all"});
         absNode.attachChild(waistNode);
 
+        Node backLegRightNode = new Node("BackLegRight");
+        BackLeg backLegRight = new BackLeg(app, new Vector3f(), backLegRightNode, waist.exports.get("BackLegRight"), new String[]{"all"});
+        waistNode.attachChild(backLegRightNode);
+
+        Node backLegLeftNode = new Node("BackLegLeft");
+        BackLeg backLegLeft = new BackLeg(app, new Vector3f(), backLegLeftNode, waist.exports.get("BackLegLeft"), new String[]{"all"});
+        waistNode.attachChild(backLegLeftNode);
 
 
         //headNode.rotate(0,90,0);
