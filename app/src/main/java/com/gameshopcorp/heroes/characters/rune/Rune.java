@@ -1,6 +1,8 @@
 package com.gameshopcorp.heroes.characters.rune;
 
 import com.gameshopcorp.heroes.characters.rune.head.BackHead;
+import com.gameshopcorp.heroes.characters.rune.head.ChinHead;
+import com.gameshopcorp.heroes.characters.rune.head.ForeHead;
 import com.gameshopcorp.heroes.characters.rune.head.TopHead;
 import com.jme3.app.SimpleApplication;
 import com.jme3.math.Vector3f;
@@ -32,6 +34,14 @@ public class Rune {
         Node backHeadNode = new Node("BackHead");
         BackHead backHead = new BackHead(app, new Vector3f(), backHeadNode, topHead.exports.get("BackHead"), new String[]{"all"});
         headNode.attachChild(backHeadNode);
+
+        Node chinHeadNode = new Node("ChinHead");
+        ChinHead chinHead = new ChinHead(app, new Vector3f(), chinHeadNode, topHead.exports.get("ChinHead"), new String[]{"all"});
+        headNode.attachChild(chinHeadNode);
+
+        Node foreHeadNode = new Node("ForeHead");
+        ForeHead foreHead = new ForeHead(app, new Vector3f(), foreHeadNode, topHead.exports.get("ForeHead"), new String[]{"all"});
+        headNode.attachChild(foreHeadNode);
 
         Node runeNode = new Node("Rune");
         runeNode.attachChild(headNode);

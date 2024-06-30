@@ -11,4 +11,13 @@ public class ChinHead extends SuperCube {
     public ChinHead(SimpleApplication app, Vector3f axis, Node node, HashMap<String, Vector3f> imports, String[] renderSides) {
         super(app, axis, node, imports, renderSides);
     }
+
+
+    @Override
+    public void make() {
+
+        updateCurrencyLine("bottom", (byte) 3, (byte) 0,new Vector3f(.5f,.75f,0));
+        updateCurrencyLine("bottom", (byte) 3, (byte) 3,new Vector3f(-.5f,.75f,0));
+
+    }
 }
