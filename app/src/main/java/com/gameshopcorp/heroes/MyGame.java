@@ -1,6 +1,6 @@
 package com.gameshopcorp.heroes;
 
-import com.gameshopcorp.heroes.characters.rune.Rune;
+import com.gameshopcorp.heroes.characters.legacyrune.Rune;
 import com.jme3.app.SimpleApplication;
 import com.jme3.math.ColorRGBA;
 
