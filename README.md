@@ -2,7 +2,7 @@
 
 ## Author: Lynden Jay Evans
 
-Project will be revisited.  Developing tools to support development
+Project will be revisited.  Making tools to support development
 
 ## An action adventure epic coming to Google Play Early Access in July 2024
 
